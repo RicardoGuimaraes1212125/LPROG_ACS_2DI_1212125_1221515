@@ -1,0 +1,33 @@
+missao "Entrega Urgente Porto" {
+    inicio: 08:30
+    drone: "Drone-X1000"
+    estado: planeada
+    rota: [
+        {
+            origem: "Armazem Porto"
+            destino: "Rua Santa Catarina"
+            distancia: 2.5 km
+            altitude: 100 m
+        },
+        {
+            origem: "Rua Santa Catarina"
+            destino: "Avenida Aliados"
+            distancia: 1.8 km
+            altitude: 80 m
+        }
+    ]
+}
+
+missao "Entrega Noturna Lisboa" {
+    inicio: 22:15
+    drone: "Drone-X2000"
+    estado: em_curso
+    rota: [
+        {
+            origem: "Centro Distribuicao Lisboa"
+            destino: "Parque das Nacoes"
+            distancia: 5.0 km
+            altitude: 120 m
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+modelo "DroneX1000" {
+    capacidade: 3.5 kg
+    autonomia: 45 min
+    velocidade: {
+        cruzeiro: 35.0 km/h
+        subida: 15.0 km/h
+        descida: 12.0 km/h
+    }
+    sensores: GPS, camera_termica, altimetro
+    limites: max_horas_voo=500, max_altitude=150, min_bateria=20, max_peso=4
+    restricoes: voo_diurno
+}
+
+drone "DRONE001" {
+    numero_serie: 20230001
+    modelo: "DroneX1000"
+    estado: ativo
+    horas_voo: 125.5
+    ultima_manutencao: 2025-04-15
+    proxima_manutencao: 2025-07-15
+}
+
+drone "DRONE002" {
+    numero_serie: 20230002
+    modelo: "DroneX1000"
+    estado: manutencao
+    horas_voo: 482.3
+    ultima_manutencao: 2025-05-01
+    proxima_manutencao: 2025-08-01
+}

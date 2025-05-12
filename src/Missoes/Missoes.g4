@@ -5,6 +5,7 @@ missoes        : (missao)* EOF;
 missao         : 'missao' STRING '{'
                    'inicio:' HORA
                    'drone:' STRING
+                   'estado:' estado_missao
                    'rota:' '[' entregas ']'
                  '}';
 
@@ -16,9 +17,12 @@ entrega        : '{'
                    'altitude:' NUM 'm'
                  '}';
 
+estado_missao  : 'planeada' | 'em_curso' | 'concluida';
+
 // Tokens
 STRING         : '"' (~["\r\n])* '"' ;
-HORA           : [0-2][0-9] ':' [0-5][0-9] ;
-NUM            : [0-9]+ ;
+HORA           : ([0-1][0-9]|[2][0-3]) ':' [0-5][0-9] ;
+NUM            : [0-9]+ ('.' [0-9]+)? ; //Permitir numeros decimais
+
 
 WS             : [ \t\r\n]+ -> skip ;

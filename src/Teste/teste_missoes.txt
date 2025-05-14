@@ -1,8 +1,0 @@
-missao "EntregaManha" {
-  inicio: 08:00
-  drone: "X500-001"
-  rota: [
-    { origem: "Armazem1", destino: "ClienteA", distancia: 3km, altitude: 50m },
-    { origem: "ClienteA", destino: "ClienteB", distancia: 2km, altitude: 60m }
-  ]
-}

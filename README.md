@@ -57,3 +57,15 @@ A tabela abaixo descreve os tokens utilizados nas gramáticas.
 | `HORA`     | Representa uma hora no formato HH:MM (e.g., 09:30, 22:15).                                                                                        |
 | `DATA`     | Uma data no formato YYYY-MM-DD (ex: 2023-10-27).                                                                                                  |
 | `WS`       | Caracteres de espaço em branco (espaços, tabulações \t, carriage returns \r, novas linhas \n).                                                    |
+
+
+# Testes
+
+| **Testes**  | **Cobertura** |
+|-------------|---|
+| `Frota 1`   | Modelo com múltiplos sensores e certificações; drone ativo com boa bateria. |
+| `Frota 2`   | Dois modelos com sensores distintos e restrições opostas (diurno/noturno). |
+| `Frota 3`   | Modelo simples e leve, ideal para testes de limites inferiores. |
+| `Missoes 1` | Múltiplas entregas leves com continuidade de rota. |
+| `Missoes 2` | Entrega única com peso elevado (para validar contra capacidade do drone). |
+| `Missoes 3` | Missão finalizada com três entregas e retorno ao ponto inicial. |

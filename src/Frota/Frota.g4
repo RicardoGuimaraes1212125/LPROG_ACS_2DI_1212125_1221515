@@ -11,13 +11,19 @@ modelo         : 'modelo' STRING '{'
                      'descida:' NUM 'km/h'
                    '}'
                    'sensores:' sensores
+                   'certificacoes:' certificacao (',' certificacao)*
                    'limites:' limites_operacionais
                    'restricoes:' restricoes
                  '}';
 
+certificacao   : ID ;
+
+
 drone          : 'drone' STRING '{'
                    'numero_serie:' NUM
                    'modelo:' STRING
+                   'peso_base:' NUM 'kg'
+                   'bateria_atual:' NUM '%'
                    'estado:' estado
                    'horas_voo:' NUM
                    'ultima_manutencao:' DATA
@@ -42,6 +48,5 @@ estado         : 'ativo' | 'manutencao' | 'inativo' | 'em_missao' ;
 STRING         : '"' (~["\r\n])* '"' ;
 ID             : [a-zA-Z_][a-zA-Z_0-9]* ;
 NUM            : [0-9]+ ('.' [0-9]+)? ; //Permitir numeros decimais
-DATA           : [0-9][0-9][0-9][0-9] '-' ([1][0-2]|[0][1-9]) '-' [0-3][0-9] ;
-
+DATA           : [0-9][0-9][0-9][0-9] '-' ([1][0-2]|[0][1-9]) '-' ([0][1-9]|[12][0-9]|[30]|[31]) ;
 WS             : [ \t\r\n]+ -> skip ;

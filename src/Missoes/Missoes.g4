@@ -10,11 +10,13 @@ missao         : 'missao' STRING '{'
                  '}';
 
 entregas       : entrega (',' entrega)* ;
+
 entrega        : '{'
                    'origem:' STRING
                    'destino:' STRING
                    'distancia:' NUM 'km'
                    'altitude:' NUM 'm'
+                   'peso:' NUM 'kg'
                  '}';
 
 estado_missao  : 'planeada' | 'em_curso' | 'concluida';
@@ -22,7 +24,5 @@ estado_missao  : 'planeada' | 'em_curso' | 'concluida';
 // Tokens
 STRING         : '"' (~["\r\n])* '"' ;
 HORA           : ([0-1][0-9]|[2][0-3]) ':' [0-5][0-9] ;
-NUM            : [0-9]+ ('.' [0-9]+)? ; //Permitir numeros decimais
-
-
+NUM            : [0-9]+ ('.' [0-9]+)? ;
 WS             : [ \t\r\n]+ -> skip ;

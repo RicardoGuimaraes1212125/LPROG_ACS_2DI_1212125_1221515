@@ -1,0 +1,14 @@
+missao "Missao Carga Pesada" {
+  inicio: 14:00
+  drone: "DRONE-002"
+  estado: em_curso
+  rota: [
+    {
+      origem: "Deposito 5"
+      destino: "Hospital Militar"
+      distancia: 15.0km
+      altitude: 150m
+      peso: 8.7kg
+    }
+  ]
+}

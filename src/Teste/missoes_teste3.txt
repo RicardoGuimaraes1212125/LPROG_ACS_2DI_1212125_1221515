@@ -1,0 +1,28 @@
+missao "Missao Composta" {
+  inicio: 07:45
+  drone: "DRONE-003"
+  estado: concluida
+  rota: [
+    {
+      origem: "Base Leste"
+      destino: "Unidade Móvel 1"
+      distancia: 5.0km
+      altitude: 120m
+      peso: 1.0kg
+    },
+    {
+      origem: "Unidade Móvel 1"
+      destino: "Clínica Oeste"
+      distancia: 8.0km
+      altitude: 110m
+      peso: 2.3kg
+    },
+    {
+      origem: "Clínica Oeste"
+      destino: "Base Leste"
+      distancia: 10.0km
+      altitude: 100m
+      peso: 1.8kg
+    }
+  ]
+}

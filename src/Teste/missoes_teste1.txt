@@ -1,0 +1,21 @@
+missao "Missao-001" {
+  inicio: 09:30
+  drone: "DRONE-001"
+  estado: planeada
+  rota: [
+    {
+      origem: "Armazem Central"
+      destino: "Hospital Norte"
+      distancia: 12.5km
+      altitude: 100m
+      peso: 2.0kg
+    },
+    {
+      origem: "Hospital Norte"
+      destino: "Centro de Saude Amial"
+      distancia: 6.0km
+      altitude: 80m
+      peso: 1.5kg
+    }
+  ]
+}

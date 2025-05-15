@@ -4,8 +4,16 @@ missao "Missao Carga Pesada" {
   estado: em_curso
   rota: [
     {
-      origem: "Deposito 5"
-      destino: "Hospital Militar"
+      origem: {
+        latitude: 41.1823
+        longitude: -8.6259
+        nome: "Deposito 5"
+      }
+      destino: {
+        latitude: 41.1602
+        longitude: -8.5859
+        nome: "Hospital Militar"
+      }
       distancia: 15.0km
       altitude: 150m
       peso: 8.7kg

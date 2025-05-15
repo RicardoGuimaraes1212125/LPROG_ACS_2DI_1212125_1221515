@@ -4,16 +4,34 @@ missao "Entrega Urgente Porto" {
     estado: planeada
     rota: [
         {
-            origem: "Armazem Porto"
-            destino: "Rua Santa Catarina"
-            distancia: 2.5 km
-            altitude: 100 m
+            origem: {
+                latitude: 41.1496
+                longitude: -8.6109
+                nome: "Armazem Porto"
+            }
+            destino: {
+                latitude: 41.1476
+                longitude: -8.6070
+                nome: "Rua Santa Catarina"
+            }
+            distancia: 2.5km
+            altitude: 100m
+            peso: 1.2kg
         },
         {
-            origem: "Rua Santa Catarina"
-            destino: "Avenida Aliados"
-            distancia: 1.8 km
-            altitude: 80 m
+            origem: {
+                latitude: 41.1476
+                longitude: -8.6070
+                nome: "Rua Santa Catarina"
+            }
+            destino: {
+                latitude: 41.1473
+                longitude: -8.6112
+                nome: "Avenida Aliados"
+            }
+            distancia: 1.8km
+            altitude: 80m
+            peso: 0.8kg
         }
     ]
 }
@@ -24,10 +42,19 @@ missao "Entrega Noturna Lisboa" {
     estado: em_curso
     rota: [
         {
-            origem: "Centro Distribuicao Lisboa"
-            destino: "Parque das Nacoes"
-            distancia: 5.0 km
-            altitude: 120 m
+            origem: {
+                latitude: 38.7436
+                longitude: -9.1602
+                nome: "Centro Distribuicao Lisboa"
+            }
+            destino: {
+                latitude: 38.7577
+                longitude: -9.0998
+                nome: "Parque das Nacoes"
+            }
+            distancia: 5.0km
+            altitude: 120m
+            peso: 3.5kg
         }
     ]
 }

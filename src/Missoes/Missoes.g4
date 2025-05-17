@@ -21,16 +21,17 @@ entrega        : '{'
 
 
 localizacao     : '{'
-                   'latitude:' COORDINATE
-                   'longitude:' COORDINATE
+                   'latitude:' coordenada
+                   'longitude:' coordenada
                    'nome:' STRING
                  '}';
 estado_missao  : 'planeada' | 'em_curso' | 'concluida';
+
+coordenada     : NUM | '-' NUM;
 
 // Tokens
 STRING         : '"' (~["\r\n])* '"' ;
 HORA           : ([0-1][0-9]|[2][0-3]) ':' [0-5][0-9] ;
 NUM            : [0-9]+ ('.' [0-9]+)? ;
-COORDINATE     :  (('-'[0-9])|([0-9]){1,3}) '.' ([0-9]){1,8}? ;
 
 WS             : [ \t\r\n]+ -> skip ;

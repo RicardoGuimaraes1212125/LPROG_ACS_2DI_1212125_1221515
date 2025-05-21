@@ -11,7 +11,7 @@ As gramaticas sao definidas em ANTLR4, e estão localizadas na pasta src.
 A estrutura de cada gramatica é simples e funciona similar a JSON, mas sem virgulas entre os elementos.
 
 
-### [1. Frota](src/Frota/Frota.g4)
+### [1. Frota](src/main/antlr4/Frota.g4)
 
 | Regra                  | Descrição                                                                                                                                                                                                                                                                                                                        |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -31,7 +31,7 @@ A estrutura de cada gramatica é simples e funciona similar a JSON, mas sem virg
 | `certificacao`         | Representa uma certificação específica que o modelo de drone possui. É um `ID` (identificador).                                                                                                                                                                                                                                  |
 | `estado`               | Representa o estado atual de um drone. Pode ser um dos estados predefinidos: 'ativo', 'manutencao', 'inativo', ou 'em_missao'.                                                                                                                                                                                                   |
 
-### [2. Missão](src/Missoes/Missoes.g4)
+### [2. Missão](src/main/antlr4/Missoes.g4)
 
 | Regra           | Descrição                                                                                                                                                                                                                                                                                                             |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -52,7 +52,7 @@ A estrutura de cada gramatica é simples e funciona similar a JSON, mas sem virg
 | `estado_missao` | Representa o estado atual de uma missão. Pode ser um dos estados predefinidos: 'planeada', 'em_curso', ou 'concluida'.                                                                                                                                                                                                |
 
 # Tokens
-Estes tokens sao comuns às duas gramaticas existentes ([Frota](src/Frota/Frota.g4) e [Missões](src/Missoes/Missoes.g4)). 
+Estes tokens sao comuns às duas gramaticas existentes ([Frota](src/main/antlr4/Frota.g4) e [Missões](src/main/antlr4/Missoes.g4)). 
 Um token define uma cadeia de caracteres representado pela expressão regular definida.
 A tabela abaixo descreve os tokens utilizados nas gramáticas.
 

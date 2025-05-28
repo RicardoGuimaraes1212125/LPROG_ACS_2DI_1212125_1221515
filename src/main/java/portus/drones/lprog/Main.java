@@ -1,6 +1,6 @@
-package portus.drones;
+package portus.drones.lprog;
 
-import portus.drones.menu.MenuPrincipal;
+import portus.drones.lprog.menu.MenuPrincipal;
 
 public class Main {
     public static void main(String[] args) {

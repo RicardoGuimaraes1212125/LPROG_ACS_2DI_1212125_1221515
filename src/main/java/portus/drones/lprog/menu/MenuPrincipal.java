@@ -1,4 +1,4 @@
-package portus.drones.menu;
+package portus.drones.lprog.menu;
 
 public class MenuPrincipal implements Runnable {
 

@@ -1,9 +1,10 @@
 package portus.drones.lprog.menu;
 
+
 import portus.drones.lprog.services.MissoesService;
 
 public class MenuMissoes implements Runnable {
-    private final MissoesService missoesService;
+    MissoesService missoesService;
 
     public MenuMissoes() {
         this.missoesService = new MissoesService();
@@ -20,7 +21,7 @@ public class MenuMissoes implements Runnable {
             System.out.println("2. Validar ficheiro de missões");
             System.out.println("3. Eliminar missão");
             System.out.println("4. Exportar missões para ficheiro");
-            System.out.println("5. Listar missões carregadas");
+            System.out.println("5. Listar missões");
             System.out.println("6. Retroceder");
 
             System.out.print("\n\nEscolha uma opção: ");
@@ -29,15 +30,14 @@ public class MenuMissoes implements Runnable {
 
             switch (option) {
                 case "1":
-                    uploadMissaoFromFile();
+                    uploadMissionsFromFile();
                     break;
-                case "2", "4", "3":
-                    throw new UnsupportedOperationException("Not implemented.");
+                case "2", "3", "4":
+                    throw new UnsupportedOperationException("Not implemented yet.");
                 case "5":
-                    listarMissoes();
+                    listMissions();
                     break;
                 case "6":
-                    System.out.println("A voltar atrás...");
                     return;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
@@ -45,27 +45,22 @@ public class MenuMissoes implements Runnable {
         }
     }
 
-    private void uploadMissaoFromFile() {
+    private void uploadMissionsFromFile() {
         System.out.print("Introduza o caminho do ficheiro: ");
         String filePath = System.console().readLine();
-        
-        if (filePath == null || filePath.trim().isEmpty()) {
-            System.out.println("Caminho do ficheiro não pode estar vazio.");
-            return;
+
+
+        while (filePath == null || filePath.trim().isEmpty()) {
+            System.out.print("Caminho do ficheiro não pode estar vazio. Por favor, tente novamente: ");
+            filePath = System.console().readLine();
         }
         
         missoesService.loadMissoesFromFile(filePath.trim());
-        
-        System.out.println("\nPressione Enter para continuar...");
-        System.console().readLine();
     }
 
 
 
-    private void listarMissoes() {
-        missoesService.listMissoes();
-        
-        System.out.println("\nPressione Enter para continuar...");
-        System.console().readLine();
+    private void listMissions() {
+        missoesService.listMissions();
     }
 }

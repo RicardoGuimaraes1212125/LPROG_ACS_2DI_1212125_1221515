@@ -1,7 +1,5 @@
 package portus.drones.lprog.services;
 
-import java.io.FileWriter;
-import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -37,7 +35,6 @@ public class MissoesService {
             // Create ANTLR input stream
             var input = CharStreams.fromString(content);
             
-            // Create lexer
             MissoesLexer lexer = new MissoesLexer(input);
             
             // Create token stream
@@ -51,11 +48,12 @@ public class MissoesService {
             parser.addErrorListener(new BaseErrorListener() {
                 @Override
                 public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol,
-                                      int line, int charPositionInLine, String msg, RecognitionException e) {
+                                        int line, int charPositionInLine, String msg, RecognitionException e) {
                     throw new RuntimeException("Syntax error at line " + line + ":" + charPositionInLine + " - " + msg);
                 }
             });
-              // Parse starting from the missoes rule
+
+            // Parse starting from the missoes rule
             // Create visitor and extract missions
             MissoesModelVisitor visitor = new MissoesModelVisitor();
             List<Missao> loadedMissoes = visitor.visitMissoes(parser.missoes());
@@ -63,39 +61,31 @@ public class MissoesService {
             // Add to existing missions
             this.missoes.addAll(loadedMissoes);
             
-            System.out.println("✓ Successfully loaded " + loadedMissoes.size() + " mission(s) from file: " + filePath);
+            System.out.println("✓ " + loadedMissoes.size() + " missões carregadas com sucesso.");
             return true;
             
         } catch (Exception e) {
-            System.err.println("✗ Error loading missions from file: " + e.getMessage());
+            System.err.println("✗ Erro ao carregar missões: " + e.getMessage());
             return false;
+        } finally {
+            // Clear lexer and parser resources
+            MissoesLexer lexer = null;
+            MissoesParser parser = null;
         }
     }
 
     /**
      * Lists all missions
      */
-    public void listMissoes() {
+    public void listMissions() {
         if (missoes.isEmpty()) {
-            System.out.println("No missions loaded.");
+            System.out.println("Sem missões carregadas.");
             return;
         }
         
-        System.out.println("\n=== LOADED MISSIONS ===");
         for (int i = 0; i < missoes.size(); i++) {
             Missao missao = missoes.get(i);
             System.out.println((i + 1) + ". " + missao.toString());
         }
-        System.out.println("======================");
     }
-    
-    /**
-     * Gets all missions
-     * @return list of missions
-     */
-    public List<Missao> getMissoes() {
-        return new ArrayList<>(missoes);
-    }
-    
-
 }

@@ -7,17 +7,17 @@ import java.util.List;
 
 public class Missao {
     private String nome;
-    private String inicioHora;
-    private String droneNomeReferencia;
+    private String inicio;
+    private String drone;
 
     private EstadoMissao estado;
     private List<Entrega> entregas;
 
 
-    public Missao(String nome, String inicioHora, String droneNomeReferencia, EstadoMissao estado, List<Entrega> entregas) {
+    public Missao(String nome, String inicio, String drone, EstadoMissao estado, List<Entrega> entregas) {
         this.nome = nome;
-        this.inicioHora = inicioHora;
-        this.droneNomeReferencia = droneNomeReferencia;
+        this.inicio = inicio;
+        this.drone = drone;
         this.estado = estado;
         this.entregas = entregas;
     }
@@ -30,20 +30,20 @@ public class Missao {
         this.nome = nome;
     }
 
-    public String getInicioHora() {
-        return inicioHora;
+    public String getInicio() {
+        return inicio;
     }
 
-    public void setInicioHora(String inicioHora) {
-        this.inicioHora = inicioHora;
+    public void setInicio(String inicio) {
+        this.inicio = inicio;
     }
 
-    public String getDroneNomeReferencia() {
-        return droneNomeReferencia;
+    public String getDrone() {
+        return drone;
     }
 
-    public void setDroneNomeReferencia(String droneNomeReferencia) {
-        this.droneNomeReferencia = droneNomeReferencia;
+    public void setDrone(String drone) {
+        this.drone = drone;
     }
 
     public EstadoMissao getEstado() {
@@ -80,8 +80,8 @@ public class Missao {
     public String toString() {
         return "Missao{" +
                 "nome='" + nome + '\'' +
-                ", inicioHora='" + inicioHora + '\'' +
-                ", droneNomeReferencia='" + droneNomeReferencia + '\'' +
+                ", inicioHora='" + inicio + '\'' +
+                ", droneNomeReferencia='" + drone + '\'' +
                 '}';
     }
 }

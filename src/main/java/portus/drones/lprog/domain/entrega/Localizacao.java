@@ -1,4 +1,4 @@
-package portus.drones.lprog.domain.missao;
+package portus.drones.lprog.domain.entrega;
 
 public class Localizacao {
     private Coordenada latitude;

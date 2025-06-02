@@ -5,6 +5,9 @@ import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
+import portus.drones.lprog.listeners.MissoesListener;
+import portus.drones.lprog.visitors.MissoesVisitor;
+
 import java.util.List;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
@@ -110,7 +113,7 @@ public class MissoesParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_missoes; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof MissoesListener ) ((MissoesListener)listener).enterMissoes(this);
+			if ( listener instanceof MissoesListener) ((MissoesListener)listener).enterMissoes(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
@@ -118,7 +121,7 @@ public class MissoesParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof MissoesVisitor ) return ((MissoesVisitor<? extends T>)visitor).visitMissoes(this);
+			if ( visitor instanceof MissoesVisitor) return ((MissoesVisitor<? extends T>)visitor).visitMissoes(this);
 			else return visitor.visitChildren(this);
 		}
 	}

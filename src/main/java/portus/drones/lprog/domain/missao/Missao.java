@@ -1,5 +1,8 @@
 package portus.drones.lprog.domain.missao;
 
+import portus.drones.lprog.domain.entrega.Entrega;
+import portus.drones.lprog.domain.entrega.Localizacao;
+
 import java.util.List;
 
 public class Missao {

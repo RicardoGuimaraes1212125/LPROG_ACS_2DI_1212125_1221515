@@ -1,5 +1,6 @@
-package portus.drones.lprog;// Generated from antlr4/Missoes.g4 by ANTLR 4.9.2
+package portus.drones.lprog.visitors;// Generated from antlr4/Missoes.g4 by ANTLR 4.9.2
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
+import portus.drones.lprog.MissoesParser;
 
 /**
  * This interface defines a complete generic visitor for a parse tree produced

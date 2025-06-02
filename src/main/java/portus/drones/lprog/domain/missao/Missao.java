@@ -14,6 +14,10 @@ public class Missao {
     private List<Entrega> entregas;
 
 
+    public Missao() {
+
+    }
+
     public Missao(String nome, String inicio, String drone, EstadoMissao estado, List<Entrega> entregas) {
         this.nome = nome;
         this.inicio = inicio;
@@ -80,8 +84,10 @@ public class Missao {
     public String toString() {
         return "Missao{" +
                 "nome='" + nome + '\'' +
-                ", inicioHora='" + inicio + '\'' +
-                ", droneNomeReferencia='" + drone + '\'' +
+                ", hora='" + inicio + '\'' +
+                ", drone='" + drone + '\'' +
+                ", estado=" + estado.toString() +
+                ", entregas=" + entregas.toString() +
                 '}';
     }
 }

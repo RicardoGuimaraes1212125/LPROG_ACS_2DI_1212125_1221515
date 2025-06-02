@@ -6,6 +6,8 @@ public class Localizacao {
     private String nome;
 
 
+    public Localizacao() { }
+
     public Localizacao(Coordenada latitude, Coordenada longitude, String nome) {
         this.latitude = latitude;
         this.longitude = longitude;
@@ -38,9 +40,9 @@ public class Localizacao {
 
     @Override
     public String toString() {
-        return "Localizacao{" +
-                "latitude=" + latitude +
-                ", longitude=" + longitude +
+        return "{" +
+                "latitude=" + latitude.toString() +
+                ", longitude=" + longitude.toString() +
                 ", nome='" + nome + '\'' +
                 '}';
     }

@@ -8,6 +8,8 @@ public class Entrega {
     private double peso;
 
 
+    public Entrega() { }
+
     public Entrega(Localizacao origem, Localizacao destino, double distancia, double altitude, double peso) {
         this.origem = origem;
         this.destino = destino;
@@ -58,12 +60,12 @@ public class Entrega {
 
     @Override
     public String toString() {
-        return "Entrega{" +
-                "origem=" + origem +
-                ", destino=" + destino +
-                ", distanciaKm=" + distancia +
-                ", altitudeM=" + altitude +
-                ", pesoKg=" + peso +
-                '}';
+        return "\n{" +
+                "origem=" + origem.toString() +
+                ", destino=" + destino.toString() +
+                ", distancia=" + distancia +
+                ", altitude=" + altitude +
+                ", peso=" + peso +
+                "}";
     }
 }

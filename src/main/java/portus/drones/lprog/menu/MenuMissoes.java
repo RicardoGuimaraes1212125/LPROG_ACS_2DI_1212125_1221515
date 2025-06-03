@@ -30,12 +30,15 @@ public class MenuMissoes implements Runnable {
 
             switch (option) {
                 case "1":
-                    uploadMissionsFromFile();
+                    uploadMissoesFromFile();
                     break;
-                case "2", "3", "4":
+                case "3":
+                    removeMissao();
+                    break;
+                case "2", "4":
                     throw new UnsupportedOperationException("Not implemented yet.");
                 case "5":
-                    listMissions();
+                    listMissoes();
                     break;
                 case "6":
                     return;
@@ -45,7 +48,7 @@ public class MenuMissoes implements Runnable {
         }
     }
 
-    private void uploadMissionsFromFile() {
+    private void uploadMissoesFromFile() {
         System.out.print("Introduza o caminho do ficheiro: ");
         String filePath = System.console().readLine();
 
@@ -59,8 +62,20 @@ public class MenuMissoes implements Runnable {
     }
 
 
+    private void removeMissao(){
+        System.out.print("Introduza o nome da missao: ");
+        String name = System.console().readLine();
 
-    private void listMissions() {
-        missoesService.listMissions();
+
+        while (name == null || name.trim().isEmpty()) {
+            System.out.print("Nome não pode estar vazio. Por favor, tente novamente: ");
+            name = System.console().readLine();
+        }
+
+        missoesService.clearMissions(name);
+    }
+
+    private void listMissoes() {
+        missoesService.listMissoes();
     }
 }

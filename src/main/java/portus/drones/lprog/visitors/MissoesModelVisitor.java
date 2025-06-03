@@ -1,6 +1,6 @@
 package portus.drones.lprog.visitors;
 
-import portus.drones.lprog.MissoesParser;
+import portus.drones.lprog.parsers.MissoesParser;
 import portus.drones.lprog.domain.entrega.Coordenada;
 import portus.drones.lprog.domain.entrega.Entrega;
 import portus.drones.lprog.domain.entrega.Localizacao;
@@ -112,10 +112,9 @@ public class MissoesModelVisitor extends MissoesBaseVisitor<Object> {
         if (ctx.getText().startsWith("-")) {
             // Negative coordinate (has '-' token)
             return -Double.parseDouble(ctx.NUM().getText());
-        } else {
-            // Positive coordinate
-            return Double.parseDouble(ctx.NUM().getText());
         }
+        // Positive coordinate
+        return Double.parseDouble(ctx.NUM().getText());
     }
     
     private String removeQuotes(String str) {

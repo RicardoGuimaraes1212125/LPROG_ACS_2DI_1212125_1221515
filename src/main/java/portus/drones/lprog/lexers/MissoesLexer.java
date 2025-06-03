@@ -1,5 +1,5 @@
 // Generated from antlr4/Missoes.g4 by ANTLR 4.9.2
-package portus.drones.lprog;// Generated from antlr4/Missoes.g4 by ANTLR 4.9.2
+package portus.drones.lprog.lexers;// Generated from antlr4/Missoes.g4 by ANTLR 4.9.2
 
 
 import org.antlr.v4.runtime.Lexer;

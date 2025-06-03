@@ -3,7 +3,7 @@ package portus.drones.lprog.listeners;// Generated from antlr4/Missoes.g4 by ANT
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
-import portus.drones.lprog.MissoesParser;
+import portus.drones.lprog.parsers.MissoesParser;
 
 /**
  * This class provides an empty implementation of {@link MissoesListener},

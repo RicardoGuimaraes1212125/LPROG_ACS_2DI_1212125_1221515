@@ -1,4 +1,4 @@
-package portus.drones.lprog;
+package portus.drones.lprog.parsers;
 
 // Generated from antlr4/Missoes.g4 by ANTLR 4.9.2
 import org.antlr.v4.runtime.atn.*;

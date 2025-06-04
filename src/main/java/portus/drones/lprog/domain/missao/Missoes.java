@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Missoes {
-    private static List<Missao> missoes = new ArrayList<>();
+    public static List<Missao> missoes = new ArrayList<>();
 
 
     public static List<Missao> getMissoes() {

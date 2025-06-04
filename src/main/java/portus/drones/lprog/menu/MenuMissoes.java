@@ -39,7 +39,7 @@ public class MenuMissoes implements Runnable {
                     removeMissao();
                     break;
                 case "4":
-                    throw new UnsupportedOperationException("Not implemented yet.");
+                    exportMissoesToFile();
                 case "5":
                     listMissoes();
                     break;
@@ -76,6 +76,18 @@ public class MenuMissoes implements Runnable {
 //        missoesService.validateMissoesFile(filePath.trim());
     }
 
+
+    private void exportMissoesToFile() {
+        System.out.print("Introduza o caminho do ficheiro onde exportar: ");
+        String filePath = System.console().readLine();
+
+        while (filePath == null || filePath.trim().isEmpty()) {
+            System.out.print("Caminho do ficheiro não pode estar vazio. Por favor, tente novamente: ");
+            filePath = System.console().readLine();
+        }
+        missoesService.exportMissoesToFile(filePath.trim());
+
+    }
 
     private void removeMissao(){
         System.out.print("Introduza o nome da missao: ");

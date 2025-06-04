@@ -1,0 +1,26 @@
+modelo "modeloX" {
+  capacidade: 10kg
+  autonomia: 30min
+  velocidade: {
+    cruzeiro: 40km/h
+    subida: 20km/h
+    descida: 25km/h
+  }
+  sensores: gps, camera
+  certificacoes: A, B
+  limites: max_horas_voo=10, max_altitude=100
+  restricoes: voo_diurno
+}
+
+drone "drone123" {
+  numero_serie: 123
+  modelo: "modeloX"
+  peso_base: 1.5kg
+  bateria_atual: 80%
+  estado: ativo
+  horas_voo: 15
+  ultima_manutencao: 2024-10-01
+  proxima_manutencao: 2025-10-01
+}
+
+

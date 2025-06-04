@@ -10,6 +10,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.Recognizer;
 
+import portus.drones.lprog.domain.missao.EstadoMissao;
 import portus.drones.lprog.domain.missao.Missoes;
 import portus.drones.lprog.lexers.MissoesLexer;
 import portus.drones.lprog.parsers.MissoesParser;
@@ -68,7 +69,7 @@ public class MissoesService {
     /**
      * Clears all missions
      */
-    public void clearMissions(String name) {
+    public void clearMissao(String name) {
         List<Missao> missoes = Missoes.getMissoes();
 
         if (name == null || name.trim().isEmpty()) {
@@ -82,12 +83,19 @@ public class MissoesService {
                 .findFirst()
                 .orElse(null);
 
-        if (missaoToRemove != null) {
-            missoes.remove(missaoToRemove);
-            System.out.println("✓  Missão '" + name + "' removida com sucesso.");
-        } else {
-            System.out.println("✗ Missão '" + name + "' não encontrada.");
+        if (missaoToRemove == null) {
+            System.out.println("✗ Missão não encontrada.");
+            return;
         }
+
+        if (missaoToRemove.getEstado() == EstadoMissao.EM_CURSO) {
+            System.out.println("✗ Missão não pode ser removida pois encontra-se em curso.");
+            return;
+        }
+
+
+        missoes.remove(missaoToRemove);
+        System.out.println("✓ Missão removida com sucesso.");
     }
 
     /**

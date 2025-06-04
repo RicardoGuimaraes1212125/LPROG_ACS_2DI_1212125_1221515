@@ -4,7 +4,7 @@ package portus.drones.lprog.menu;
 import portus.drones.lprog.services.MissoesService;
 
 public class MenuMissoes implements Runnable {
-    MissoesService missoesService;
+    private final MissoesService missoesService;
 
     public MenuMissoes() {
         this.missoesService = new MissoesService();
@@ -32,10 +32,13 @@ public class MenuMissoes implements Runnable {
                 case "1":
                     uploadMissoesFromFile();
                     break;
+                case "2":
+                    validateMissoesFile();
+                    break;
                 case "3":
                     removeMissao();
                     break;
-                case "2", "4":
+                case "4":
                     throw new UnsupportedOperationException("Not implemented yet.");
                 case "5":
                     listMissoes();
@@ -61,6 +64,18 @@ public class MenuMissoes implements Runnable {
         missoesService.loadMissoesFromFile(filePath.trim());
     }
 
+    private void validateMissoesFile() {
+        System.out.print("Introduza o caminho do ficheiro: ");
+        String filePath = System.console().readLine();
+
+        while (filePath == null || filePath.trim().isEmpty()) {
+            System.out.print("Caminho do ficheiro não pode estar vazio. Por favor, tente novamente: ");
+            filePath = System.console().readLine();
+        }
+
+//        missoesService.validateMissoesFile(filePath.trim());
+    }
+
 
     private void removeMissao(){
         System.out.print("Introduza o nome da missao: ");
@@ -72,7 +87,7 @@ public class MenuMissoes implements Runnable {
             name = System.console().readLine();
         }
 
-        missoesService.clearMissions(name);
+        missoesService.clearMissao(name);
     }
 
     private void listMissoes() {

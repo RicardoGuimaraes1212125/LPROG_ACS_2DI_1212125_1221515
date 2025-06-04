@@ -30,8 +30,7 @@ public class MissoesService {
     /**
      * Loads missions from a file
      * @param filePath path to the file
-     * @return true if successful, false otherwise
-     */    
+     */
     public void loadMissoesFromFile(String filePath) {
         try {
             String content = new String(Files.readAllBytes(Paths.get(filePath)));
@@ -57,7 +56,6 @@ public class MissoesService {
                     throw new RuntimeException("Erro de sintax na linha " + line + ":" + charPositionInLine + " - " + msg);
                 }
             });
-
 
             // Create visitor and extract missions
             MissoesModelVisitor visitor = new MissoesModelVisitor();

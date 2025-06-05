@@ -17,6 +17,26 @@ public interface FrotaListener extends ParseTreeListener {
 	 */
 	void exitFrota(FrotaParser.FrotaContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link FrotaParser#drone}.
+	 * @param ctx the parse tree
+	 */
+	void enterDrone(FrotaParser.DroneContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link FrotaParser#drone}.
+	 * @param ctx the parse tree
+	 */
+	void exitDrone(FrotaParser.DroneContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link FrotaParser#estado}.
+	 * @param ctx the parse tree
+	 */
+	void enterEstado(FrotaParser.EstadoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link FrotaParser#estado}.
+	 * @param ctx the parse tree
+	 */
+	void exitEstado(FrotaParser.EstadoContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link FrotaParser#modelo}.
 	 * @param ctx the parse tree
 	 */
@@ -36,16 +56,6 @@ public interface FrotaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCertificacao(FrotaParser.CertificacaoContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link FrotaParser#drone}.
-	 * @param ctx the parse tree
-	 */
-	void enterDrone(FrotaParser.DroneContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link FrotaParser#drone}.
-	 * @param ctx the parse tree
-	 */
-	void exitDrone(FrotaParser.DroneContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link FrotaParser#sensores}.
 	 * @param ctx the parse tree
@@ -106,14 +116,4 @@ public interface FrotaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitRestricao(FrotaParser.RestricaoContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link FrotaParser#estado}.
-	 * @param ctx the parse tree
-	 */
-	void enterEstado(FrotaParser.EstadoContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link FrotaParser#estado}.
-	 * @param ctx the parse tree
-	 */
-	void exitEstado(FrotaParser.EstadoContext ctx);
 }

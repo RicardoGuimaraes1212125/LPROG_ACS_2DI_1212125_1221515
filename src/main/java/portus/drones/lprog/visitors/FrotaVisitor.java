@@ -16,6 +16,18 @@ public interface FrotaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFrota(FrotaParser.FrotaContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link FrotaParser#drone}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDrone(FrotaParser.DroneContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link FrotaParser#estado}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEstado(FrotaParser.EstadoContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link FrotaParser#modelo}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -27,12 +39,6 @@ public interface FrotaVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitCertificacao(FrotaParser.CertificacaoContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link FrotaParser#drone}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDrone(FrotaParser.DroneContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link FrotaParser#sensores}.
 	 * @param ctx the parse tree
@@ -69,10 +75,4 @@ public interface FrotaVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitRestricao(FrotaParser.RestricaoContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link FrotaParser#estado}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitEstado(FrotaParser.EstadoContext ctx);
 }

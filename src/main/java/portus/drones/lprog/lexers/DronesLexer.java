@@ -1,4 +1,4 @@
-// Generated from Frota.g4 by ANTLR 4.9.2
+// Generated from Drones.g4 by ANTLR 4.9.2
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.*;
@@ -6,7 +6,7 @@ import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class FrotaLexer extends Lexer {
+public class DronesLexer extends Lexer {
 	static { RuntimeMetaData.checkVersion("4.9.2", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -94,13 +94,13 @@ public class FrotaLexer extends Lexer {
 	}
 
 
-	public FrotaLexer(CharStream input) {
+	public DronesLexer(CharStream input) {
 		super(input);
 		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	@Override
-	public String getGrammarFileName() { return "Frota.g4"; }
+	public String getGrammarFileName() { return "Drones.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }

@@ -1,90 +1,83 @@
-// Generated from Frota.g4 by ANTLR 4.9.2
+// Generated from Drones.g4 by ANTLR 4.9.2
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**
- * This class provides an empty implementation of {@link FrotaVisitor},
+ * This class provides an empty implementation of {@link DronesVisitor},
  * which can be extended to create a visitor which only needs to handle a subset
  * of the available methods.
  *
  * @param <T> The return type of the visit operation. Use {@link Void} for
  * operations with no return type.
  */
-public class FrotaBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements FrotaVisitor<T> {
+public class DronesBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements DronesVisitor<T> {
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitFrota(FrotaParser.FrotaContext ctx) { return visitChildren(ctx); }
+	@Override public T visitDrone(DronesParser.DroneContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitDrone(FrotaParser.DroneContext ctx) { return visitChildren(ctx); }
+	@Override public T visitEstado(DronesParser.EstadoContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitEstado(FrotaParser.EstadoContext ctx) { return visitChildren(ctx); }
+	@Override public T visitModelo(DronesParser.ModeloContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitModelo(FrotaParser.ModeloContext ctx) { return visitChildren(ctx); }
+	@Override public T visitCertificacao(DronesParser.CertificacaoContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitCertificacao(FrotaParser.CertificacaoContext ctx) { return visitChildren(ctx); }
+	@Override public T visitSensores(DronesParser.SensoresContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitSensores(FrotaParser.SensoresContext ctx) { return visitChildren(ctx); }
+	@Override public T visitSensor(DronesParser.SensorContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitSensor(FrotaParser.SensorContext ctx) { return visitChildren(ctx); }
+	@Override public T visitLimites_operacionais(DronesParser.Limites_operacionaisContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitLimites_operacionais(FrotaParser.Limites_operacionaisContext ctx) { return visitChildren(ctx); }
+	@Override public T visitLimite(DronesParser.LimiteContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitLimite(FrotaParser.LimiteContext ctx) { return visitChildren(ctx); }
+	@Override public T visitRestricoes(DronesParser.RestricoesContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitRestricoes(FrotaParser.RestricoesContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitRestricao(FrotaParser.RestricaoContext ctx) { return visitChildren(ctx); }
+	@Override public T visitRestricao(DronesParser.RestricaoContext ctx) { return visitChildren(ctx); }
 }

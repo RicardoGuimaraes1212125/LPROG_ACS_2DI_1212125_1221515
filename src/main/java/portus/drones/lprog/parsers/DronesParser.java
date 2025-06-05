@@ -1,4 +1,4 @@
-// Generated from Frota.g4 by ANTLR 4.9.2
+// Generated from Drones.g4 by ANTLR 4.9.2
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -6,7 +6,7 @@ import org.antlr.v4.runtime.tree.*;
 import java.util.List;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class FrotaParser extends Parser {
+public class DronesParser extends Parser {
 	static { RuntimeMetaData.checkVersion("4.9.2", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -20,13 +20,13 @@ public class FrotaParser extends Parser {
 		T__31=32, T__32=33, T__33=34, T__34=35, T__35=36, T__36=37, DATA=38, STRING=39, 
 		ID=40, NUM=41, WS=42;
 	public static final int
-		RULE_frota = 0, RULE_drone = 1, RULE_estado = 2, RULE_modelo = 3, RULE_certificacao = 4, 
-		RULE_sensores = 5, RULE_sensor = 6, RULE_limites_operacionais = 7, RULE_limite = 8, 
-		RULE_restricoes = 9, RULE_restricao = 10;
+		RULE_drone = 0, RULE_estado = 1, RULE_modelo = 2, RULE_certificacao = 3, 
+		RULE_sensores = 4, RULE_sensor = 5, RULE_limites_operacionais = 6, RULE_limite = 7, 
+		RULE_restricoes = 8, RULE_restricao = 9;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"frota", "drone", "estado", "modelo", "certificacao", "sensores", "sensor", 
-			"limites_operacionais", "limite", "restricoes", "restricao"
+			"drone", "estado", "modelo", "certificacao", "sensores", "sensor", "limites_operacionais", 
+			"limite", "restricoes", "restricao"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -87,7 +87,7 @@ public class FrotaParser extends Parser {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "Frota.g4"; }
+	public String getGrammarFileName() { return "Drones.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -98,88 +98,25 @@ public class FrotaParser extends Parser {
 	@Override
 	public ATN getATN() { return _ATN; }
 
-	public FrotaParser(TokenStream input) {
+	public DronesParser(TokenStream input) {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
-	public static class FrotaContext extends ParserRuleContext {
-		public TerminalNode EOF() { return getToken(FrotaParser.EOF, 0); }
-		public List<DroneContext> drone() {
-			return getRuleContexts(DroneContext.class);
-		}
-		public DroneContext drone(int i) {
-			return getRuleContext(DroneContext.class,i);
-		}
-		public FrotaContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_frota; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof FrotaListener ) ((FrotaListener)listener).enterFrota(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof FrotaListener ) ((FrotaListener)listener).exitFrota(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof FrotaVisitor ) return ((FrotaVisitor<? extends T>)visitor).visitFrota(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final FrotaContext frota() throws RecognitionException {
-		FrotaContext _localctx = new FrotaContext(_ctx, getState());
-		enterRule(_localctx, 0, RULE_frota);
-		int _la;
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(25);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			while (_la==T__0) {
-				{
-				{
-				setState(22);
-				drone();
-				}
-				}
-				setState(27);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-			}
-			setState(28);
-			match(EOF);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
 	public static class DroneContext extends ParserRuleContext {
-		public List<TerminalNode> STRING() { return getTokens(FrotaParser.STRING); }
+		public List<TerminalNode> STRING() { return getTokens(DronesParser.STRING); }
 		public TerminalNode STRING(int i) {
-			return getToken(FrotaParser.STRING, i);
+			return getToken(DronesParser.STRING, i);
 		}
-		public List<TerminalNode> NUM() { return getTokens(FrotaParser.NUM); }
+		public List<TerminalNode> NUM() { return getTokens(DronesParser.NUM); }
 		public TerminalNode NUM(int i) {
-			return getToken(FrotaParser.NUM, i);
+			return getToken(DronesParser.NUM, i);
 		}
 		public EstadoContext estado() {
 			return getRuleContext(EstadoContext.class,0);
 		}
-		public List<TerminalNode> DATA() { return getTokens(FrotaParser.DATA); }
+		public List<TerminalNode> DATA() { return getTokens(DronesParser.DATA); }
 		public TerminalNode DATA(int i) {
-			return getToken(FrotaParser.DATA, i);
+			return getToken(DronesParser.DATA, i);
 		}
 		public DroneContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -187,68 +124,68 @@ public class FrotaParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_drone; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof FrotaListener ) ((FrotaListener)listener).enterDrone(this);
+			if ( listener instanceof DronesListener ) ((DronesListener)listener).enterDrone(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof FrotaListener ) ((FrotaListener)listener).exitDrone(this);
+			if ( listener instanceof DronesListener ) ((DronesListener)listener).exitDrone(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof FrotaVisitor ) return ((FrotaVisitor<? extends T>)visitor).visitDrone(this);
+			if ( visitor instanceof DronesVisitor ) return ((DronesVisitor<? extends T>)visitor).visitDrone(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final DroneContext drone() throws RecognitionException {
 		DroneContext _localctx = new DroneContext(_ctx, getState());
-		enterRule(_localctx, 2, RULE_drone);
+		enterRule(_localctx, 0, RULE_drone);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(30);
+			setState(20);
 			match(T__0);
-			setState(31);
+			setState(21);
 			match(STRING);
-			setState(32);
+			setState(22);
 			match(T__1);
-			setState(33);
+			setState(23);
 			match(T__2);
-			setState(34);
+			setState(24);
 			match(NUM);
-			setState(35);
+			setState(25);
 			match(T__3);
-			setState(36);
+			setState(26);
 			match(STRING);
-			setState(37);
+			setState(27);
 			match(T__4);
-			setState(38);
+			setState(28);
 			match(NUM);
-			setState(39);
+			setState(29);
 			match(T__5);
-			setState(40);
+			setState(30);
 			match(T__6);
-			setState(41);
+			setState(31);
 			match(NUM);
-			setState(42);
+			setState(32);
 			match(T__7);
-			setState(43);
+			setState(33);
 			match(T__8);
-			setState(44);
+			setState(34);
 			estado();
-			setState(45);
+			setState(35);
 			match(T__9);
-			setState(46);
+			setState(36);
 			match(NUM);
-			setState(47);
+			setState(37);
 			match(T__10);
-			setState(48);
+			setState(38);
 			match(DATA);
-			setState(49);
+			setState(39);
 			match(T__11);
-			setState(50);
+			setState(40);
 			match(DATA);
-			setState(51);
+			setState(41);
 			match(T__12);
 			}
 		}
@@ -270,27 +207,27 @@ public class FrotaParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_estado; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof FrotaListener ) ((FrotaListener)listener).enterEstado(this);
+			if ( listener instanceof DronesListener ) ((DronesListener)listener).enterEstado(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof FrotaListener ) ((FrotaListener)listener).exitEstado(this);
+			if ( listener instanceof DronesListener ) ((DronesListener)listener).exitEstado(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof FrotaVisitor ) return ((FrotaVisitor<? extends T>)visitor).visitEstado(this);
+			if ( visitor instanceof DronesVisitor ) return ((DronesVisitor<? extends T>)visitor).visitEstado(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final EstadoContext estado() throws RecognitionException {
 		EstadoContext _localctx = new EstadoContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_estado);
+		enterRule(_localctx, 2, RULE_estado);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(53);
+			setState(43);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__13) | (1L << T__14) | (1L << T__15) | (1L << T__16))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -314,10 +251,10 @@ public class FrotaParser extends Parser {
 	}
 
 	public static class ModeloContext extends ParserRuleContext {
-		public TerminalNode STRING() { return getToken(FrotaParser.STRING, 0); }
-		public List<TerminalNode> NUM() { return getTokens(FrotaParser.NUM); }
+		public TerminalNode STRING() { return getToken(DronesParser.STRING, 0); }
+		public List<TerminalNode> NUM() { return getTokens(DronesParser.NUM); }
 		public TerminalNode NUM(int i) {
-			return getToken(FrotaParser.NUM, i);
+			return getToken(DronesParser.NUM, i);
 		}
 		public SensoresContext sensores() {
 			return getRuleContext(SensoresContext.class,0);
@@ -340,101 +277,101 @@ public class FrotaParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_modelo; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof FrotaListener ) ((FrotaListener)listener).enterModelo(this);
+			if ( listener instanceof DronesListener ) ((DronesListener)listener).enterModelo(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof FrotaListener ) ((FrotaListener)listener).exitModelo(this);
+			if ( listener instanceof DronesListener ) ((DronesListener)listener).exitModelo(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof FrotaVisitor ) return ((FrotaVisitor<? extends T>)visitor).visitModelo(this);
+			if ( visitor instanceof DronesVisitor ) return ((DronesVisitor<? extends T>)visitor).visitModelo(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final ModeloContext modelo() throws RecognitionException {
 		ModeloContext _localctx = new ModeloContext(_ctx, getState());
-		enterRule(_localctx, 6, RULE_modelo);
+		enterRule(_localctx, 4, RULE_modelo);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(55);
+			setState(45);
 			match(T__17);
-			setState(56);
+			setState(46);
 			match(STRING);
-			setState(57);
+			setState(47);
 			match(T__1);
-			setState(58);
+			setState(48);
 			match(T__18);
-			setState(59);
+			setState(49);
 			match(NUM);
-			setState(60);
+			setState(50);
 			match(T__5);
-			setState(61);
+			setState(51);
 			match(T__19);
-			setState(62);
+			setState(52);
 			match(NUM);
-			setState(63);
+			setState(53);
 			match(T__20);
-			setState(64);
+			setState(54);
 			match(T__21);
-			setState(65);
+			setState(55);
 			match(T__1);
-			setState(66);
+			setState(56);
 			match(T__22);
-			setState(67);
+			setState(57);
 			match(NUM);
-			setState(68);
+			setState(58);
 			match(T__23);
-			setState(69);
+			setState(59);
 			match(T__24);
-			setState(70);
+			setState(60);
 			match(NUM);
-			setState(71);
+			setState(61);
 			match(T__23);
-			setState(72);
+			setState(62);
 			match(T__25);
-			setState(73);
+			setState(63);
 			match(NUM);
-			setState(74);
+			setState(64);
 			match(T__23);
-			setState(75);
+			setState(65);
 			match(T__12);
-			setState(76);
+			setState(66);
 			match(T__26);
-			setState(77);
+			setState(67);
 			sensores();
-			setState(78);
+			setState(68);
 			match(T__27);
-			setState(79);
+			setState(69);
 			certificacao();
-			setState(84);
+			setState(74);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__28) {
 				{
 				{
-				setState(80);
+				setState(70);
 				match(T__28);
-				setState(81);
+				setState(71);
 				certificacao();
 				}
 				}
-				setState(86);
+				setState(76);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(87);
+			setState(77);
 			match(T__29);
-			setState(88);
+			setState(78);
 			limites_operacionais();
-			setState(89);
+			setState(79);
 			match(T__30);
-			setState(90);
+			setState(80);
 			restricoes();
-			setState(91);
+			setState(81);
 			match(T__12);
 			}
 		}
@@ -450,33 +387,33 @@ public class FrotaParser extends Parser {
 	}
 
 	public static class CertificacaoContext extends ParserRuleContext {
-		public TerminalNode ID() { return getToken(FrotaParser.ID, 0); }
+		public TerminalNode ID() { return getToken(DronesParser.ID, 0); }
 		public CertificacaoContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_certificacao; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof FrotaListener ) ((FrotaListener)listener).enterCertificacao(this);
+			if ( listener instanceof DronesListener ) ((DronesListener)listener).enterCertificacao(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof FrotaListener ) ((FrotaListener)listener).exitCertificacao(this);
+			if ( listener instanceof DronesListener ) ((DronesListener)listener).exitCertificacao(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof FrotaVisitor ) return ((FrotaVisitor<? extends T>)visitor).visitCertificacao(this);
+			if ( visitor instanceof DronesVisitor ) return ((DronesVisitor<? extends T>)visitor).visitCertificacao(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final CertificacaoContext certificacao() throws RecognitionException {
 		CertificacaoContext _localctx = new CertificacaoContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_certificacao);
+		enterRule(_localctx, 6, RULE_certificacao);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(93);
+			setState(83);
 			match(ID);
 			}
 		}
@@ -504,41 +441,41 @@ public class FrotaParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_sensores; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof FrotaListener ) ((FrotaListener)listener).enterSensores(this);
+			if ( listener instanceof DronesListener ) ((DronesListener)listener).enterSensores(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof FrotaListener ) ((FrotaListener)listener).exitSensores(this);
+			if ( listener instanceof DronesListener ) ((DronesListener)listener).exitSensores(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof FrotaVisitor ) return ((FrotaVisitor<? extends T>)visitor).visitSensores(this);
+			if ( visitor instanceof DronesVisitor ) return ((DronesVisitor<? extends T>)visitor).visitSensores(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final SensoresContext sensores() throws RecognitionException {
 		SensoresContext _localctx = new SensoresContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_sensores);
+		enterRule(_localctx, 8, RULE_sensores);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(95);
+			setState(85);
 			sensor();
-			setState(100);
+			setState(90);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__28) {
 				{
 				{
-				setState(96);
+				setState(86);
 				match(T__28);
-				setState(97);
+				setState(87);
 				sensor();
 				}
 				}
-				setState(102);
+				setState(92);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -556,33 +493,33 @@ public class FrotaParser extends Parser {
 	}
 
 	public static class SensorContext extends ParserRuleContext {
-		public TerminalNode ID() { return getToken(FrotaParser.ID, 0); }
+		public TerminalNode ID() { return getToken(DronesParser.ID, 0); }
 		public SensorContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_sensor; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof FrotaListener ) ((FrotaListener)listener).enterSensor(this);
+			if ( listener instanceof DronesListener ) ((DronesListener)listener).enterSensor(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof FrotaListener ) ((FrotaListener)listener).exitSensor(this);
+			if ( listener instanceof DronesListener ) ((DronesListener)listener).exitSensor(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof FrotaVisitor ) return ((FrotaVisitor<? extends T>)visitor).visitSensor(this);
+			if ( visitor instanceof DronesVisitor ) return ((DronesVisitor<? extends T>)visitor).visitSensor(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final SensorContext sensor() throws RecognitionException {
 		SensorContext _localctx = new SensorContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_sensor);
+		enterRule(_localctx, 10, RULE_sensor);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(103);
+			setState(93);
 			match(ID);
 			}
 		}
@@ -610,41 +547,41 @@ public class FrotaParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_limites_operacionais; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof FrotaListener ) ((FrotaListener)listener).enterLimites_operacionais(this);
+			if ( listener instanceof DronesListener ) ((DronesListener)listener).enterLimites_operacionais(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof FrotaListener ) ((FrotaListener)listener).exitLimites_operacionais(this);
+			if ( listener instanceof DronesListener ) ((DronesListener)listener).exitLimites_operacionais(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof FrotaVisitor ) return ((FrotaVisitor<? extends T>)visitor).visitLimites_operacionais(this);
+			if ( visitor instanceof DronesVisitor ) return ((DronesVisitor<? extends T>)visitor).visitLimites_operacionais(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final Limites_operacionaisContext limites_operacionais() throws RecognitionException {
 		Limites_operacionaisContext _localctx = new Limites_operacionaisContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_limites_operacionais);
+		enterRule(_localctx, 12, RULE_limites_operacionais);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(105);
+			setState(95);
 			limite();
-			setState(110);
+			setState(100);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__28) {
 				{
 				{
-				setState(106);
+				setState(96);
 				match(T__28);
-				setState(107);
+				setState(97);
 				limite();
 				}
 				}
-				setState(112);
+				setState(102);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -662,66 +599,66 @@ public class FrotaParser extends Parser {
 	}
 
 	public static class LimiteContext extends ParserRuleContext {
-		public TerminalNode NUM() { return getToken(FrotaParser.NUM, 0); }
+		public TerminalNode NUM() { return getToken(DronesParser.NUM, 0); }
 		public LimiteContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_limite; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof FrotaListener ) ((FrotaListener)listener).enterLimite(this);
+			if ( listener instanceof DronesListener ) ((DronesListener)listener).enterLimite(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof FrotaListener ) ((FrotaListener)listener).exitLimite(this);
+			if ( listener instanceof DronesListener ) ((DronesListener)listener).exitLimite(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof FrotaVisitor ) return ((FrotaVisitor<? extends T>)visitor).visitLimite(this);
+			if ( visitor instanceof DronesVisitor ) return ((DronesVisitor<? extends T>)visitor).visitLimite(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final LimiteContext limite() throws RecognitionException {
 		LimiteContext _localctx = new LimiteContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_limite);
+		enterRule(_localctx, 14, RULE_limite);
 		try {
-			setState(121);
+			setState(111);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__31:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(113);
+				setState(103);
 				match(T__31);
-				setState(114);
+				setState(104);
 				match(NUM);
 				}
 				break;
 			case T__32:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(115);
+				setState(105);
 				match(T__32);
-				setState(116);
+				setState(106);
 				match(NUM);
 				}
 				break;
 			case T__33:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(117);
+				setState(107);
 				match(T__33);
-				setState(118);
+				setState(108);
 				match(NUM);
 				}
 				break;
 			case T__34:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(119);
+				setState(109);
 				match(T__34);
-				setState(120);
+				setState(110);
 				match(NUM);
 				}
 				break;
@@ -753,41 +690,41 @@ public class FrotaParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_restricoes; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof FrotaListener ) ((FrotaListener)listener).enterRestricoes(this);
+			if ( listener instanceof DronesListener ) ((DronesListener)listener).enterRestricoes(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof FrotaListener ) ((FrotaListener)listener).exitRestricoes(this);
+			if ( listener instanceof DronesListener ) ((DronesListener)listener).exitRestricoes(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof FrotaVisitor ) return ((FrotaVisitor<? extends T>)visitor).visitRestricoes(this);
+			if ( visitor instanceof DronesVisitor ) return ((DronesVisitor<? extends T>)visitor).visitRestricoes(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final RestricoesContext restricoes() throws RecognitionException {
 		RestricoesContext _localctx = new RestricoesContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_restricoes);
+		enterRule(_localctx, 16, RULE_restricoes);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(123);
+			setState(113);
 			restricao();
-			setState(128);
+			setState(118);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__28) {
 				{
 				{
-				setState(124);
+				setState(114);
 				match(T__28);
-				setState(125);
+				setState(115);
 				restricao();
 				}
 				}
-				setState(130);
+				setState(120);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -811,27 +748,27 @@ public class FrotaParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_restricao; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof FrotaListener ) ((FrotaListener)listener).enterRestricao(this);
+			if ( listener instanceof DronesListener ) ((DronesListener)listener).enterRestricao(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof FrotaListener ) ((FrotaListener)listener).exitRestricao(this);
+			if ( listener instanceof DronesListener ) ((DronesListener)listener).exitRestricao(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof FrotaVisitor ) return ((FrotaVisitor<? extends T>)visitor).visitRestricao(this);
+			if ( visitor instanceof DronesVisitor ) return ((DronesVisitor<? extends T>)visitor).visitRestricao(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final RestricaoContext restricao() throws RecognitionException {
 		RestricaoContext _localctx = new RestricaoContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_restricao);
+		enterRule(_localctx, 18, RULE_restricao);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(131);
+			setState(121);
 			_la = _input.LA(1);
 			if ( !(_la==T__35 || _la==T__36) ) {
 			_errHandler.recoverInline(this);
@@ -855,38 +792,34 @@ public class FrotaParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3,\u0088\4\2\t\2\4"+
-		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
-		"\13\4\f\t\f\3\2\7\2\32\n\2\f\2\16\2\35\13\2\3\2\3\2\3\3\3\3\3\3\3\3\3"+
-		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3"+
-		"\3\3\3\4\3\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3"+
-		"\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\7\5U\n\5\f\5\16\5X"+
-		"\13\5\3\5\3\5\3\5\3\5\3\5\3\5\3\6\3\6\3\7\3\7\3\7\7\7e\n\7\f\7\16\7h\13"+
-		"\7\3\b\3\b\3\t\3\t\3\t\7\to\n\t\f\t\16\tr\13\t\3\n\3\n\3\n\3\n\3\n\3\n"+
-		"\3\n\3\n\5\n|\n\n\3\13\3\13\3\13\7\13\u0081\n\13\f\13\16\13\u0084\13\13"+
-		"\3\f\3\f\3\f\2\2\r\2\4\6\b\n\f\16\20\22\24\26\2\4\3\2\20\23\3\2&\'\2\u0084"+
-		"\2\33\3\2\2\2\4 \3\2\2\2\6\67\3\2\2\2\b9\3\2\2\2\n_\3\2\2\2\fa\3\2\2\2"+
-		"\16i\3\2\2\2\20k\3\2\2\2\22{\3\2\2\2\24}\3\2\2\2\26\u0085\3\2\2\2\30\32"+
-		"\5\4\3\2\31\30\3\2\2\2\32\35\3\2\2\2\33\31\3\2\2\2\33\34\3\2\2\2\34\36"+
-		"\3\2\2\2\35\33\3\2\2\2\36\37\7\2\2\3\37\3\3\2\2\2 !\7\3\2\2!\"\7)\2\2"+
-		"\"#\7\4\2\2#$\7\5\2\2$%\7+\2\2%&\7\6\2\2&\'\7)\2\2\'(\7\7\2\2()\7+\2\2"+
-		")*\7\b\2\2*+\7\t\2\2+,\7+\2\2,-\7\n\2\2-.\7\13\2\2./\5\6\4\2/\60\7\f\2"+
-		"\2\60\61\7+\2\2\61\62\7\r\2\2\62\63\7(\2\2\63\64\7\16\2\2\64\65\7(\2\2"+
-		"\65\66\7\17\2\2\66\5\3\2\2\2\678\t\2\2\28\7\3\2\2\29:\7\24\2\2:;\7)\2"+
-		"\2;<\7\4\2\2<=\7\25\2\2=>\7+\2\2>?\7\b\2\2?@\7\26\2\2@A\7+\2\2AB\7\27"+
-		"\2\2BC\7\30\2\2CD\7\4\2\2DE\7\31\2\2EF\7+\2\2FG\7\32\2\2GH\7\33\2\2HI"+
-		"\7+\2\2IJ\7\32\2\2JK\7\34\2\2KL\7+\2\2LM\7\32\2\2MN\7\17\2\2NO\7\35\2"+
-		"\2OP\5\f\7\2PQ\7\36\2\2QV\5\n\6\2RS\7\37\2\2SU\5\n\6\2TR\3\2\2\2UX\3\2"+
-		"\2\2VT\3\2\2\2VW\3\2\2\2WY\3\2\2\2XV\3\2\2\2YZ\7 \2\2Z[\5\20\t\2[\\\7"+
-		"!\2\2\\]\5\24\13\2]^\7\17\2\2^\t\3\2\2\2_`\7*\2\2`\13\3\2\2\2af\5\16\b"+
-		"\2bc\7\37\2\2ce\5\16\b\2db\3\2\2\2eh\3\2\2\2fd\3\2\2\2fg\3\2\2\2g\r\3"+
-		"\2\2\2hf\3\2\2\2ij\7*\2\2j\17\3\2\2\2kp\5\22\n\2lm\7\37\2\2mo\5\22\n\2"+
-		"nl\3\2\2\2or\3\2\2\2pn\3\2\2\2pq\3\2\2\2q\21\3\2\2\2rp\3\2\2\2st\7\"\2"+
-		"\2t|\7+\2\2uv\7#\2\2v|\7+\2\2wx\7$\2\2x|\7+\2\2yz\7%\2\2z|\7+\2\2{s\3"+
-		"\2\2\2{u\3\2\2\2{w\3\2\2\2{y\3\2\2\2|\23\3\2\2\2}\u0082\5\26\f\2~\177"+
-		"\7\37\2\2\177\u0081\5\26\f\2\u0080~\3\2\2\2\u0081\u0084\3\2\2\2\u0082"+
-		"\u0080\3\2\2\2\u0082\u0083\3\2\2\2\u0083\25\3\2\2\2\u0084\u0082\3\2\2"+
-		"\2\u0085\u0086\t\3\2\2\u0086\27\3\2\2\2\b\33Vfp{\u0082";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3,~\4\2\t\2\4\3\t\3"+
+		"\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\3\2"+
+		"\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3"+
+		"\2\3\2\3\2\3\2\3\2\3\3\3\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4"+
+		"\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\7\4K"+
+		"\n\4\f\4\16\4N\13\4\3\4\3\4\3\4\3\4\3\4\3\4\3\5\3\5\3\6\3\6\3\6\7\6[\n"+
+		"\6\f\6\16\6^\13\6\3\7\3\7\3\b\3\b\3\b\7\be\n\b\f\b\16\bh\13\b\3\t\3\t"+
+		"\3\t\3\t\3\t\3\t\3\t\3\t\5\tr\n\t\3\n\3\n\3\n\7\nw\n\n\f\n\16\nz\13\n"+
+		"\3\13\3\13\3\13\2\2\f\2\4\6\b\n\f\16\20\22\24\2\4\3\2\20\23\3\2&\'\2z"+
+		"\2\26\3\2\2\2\4-\3\2\2\2\6/\3\2\2\2\bU\3\2\2\2\nW\3\2\2\2\f_\3\2\2\2\16"+
+		"a\3\2\2\2\20q\3\2\2\2\22s\3\2\2\2\24{\3\2\2\2\26\27\7\3\2\2\27\30\7)\2"+
+		"\2\30\31\7\4\2\2\31\32\7\5\2\2\32\33\7+\2\2\33\34\7\6\2\2\34\35\7)\2\2"+
+		"\35\36\7\7\2\2\36\37\7+\2\2\37 \7\b\2\2 !\7\t\2\2!\"\7+\2\2\"#\7\n\2\2"+
+		"#$\7\13\2\2$%\5\4\3\2%&\7\f\2\2&\'\7+\2\2\'(\7\r\2\2()\7(\2\2)*\7\16\2"+
+		"\2*+\7(\2\2+,\7\17\2\2,\3\3\2\2\2-.\t\2\2\2.\5\3\2\2\2/\60\7\24\2\2\60"+
+		"\61\7)\2\2\61\62\7\4\2\2\62\63\7\25\2\2\63\64\7+\2\2\64\65\7\b\2\2\65"+
+		"\66\7\26\2\2\66\67\7+\2\2\678\7\27\2\289\7\30\2\29:\7\4\2\2:;\7\31\2\2"+
+		";<\7+\2\2<=\7\32\2\2=>\7\33\2\2>?\7+\2\2?@\7\32\2\2@A\7\34\2\2AB\7+\2"+
+		"\2BC\7\32\2\2CD\7\17\2\2DE\7\35\2\2EF\5\n\6\2FG\7\36\2\2GL\5\b\5\2HI\7"+
+		"\37\2\2IK\5\b\5\2JH\3\2\2\2KN\3\2\2\2LJ\3\2\2\2LM\3\2\2\2MO\3\2\2\2NL"+
+		"\3\2\2\2OP\7 \2\2PQ\5\16\b\2QR\7!\2\2RS\5\22\n\2ST\7\17\2\2T\7\3\2\2\2"+
+		"UV\7*\2\2V\t\3\2\2\2W\\\5\f\7\2XY\7\37\2\2Y[\5\f\7\2ZX\3\2\2\2[^\3\2\2"+
+		"\2\\Z\3\2\2\2\\]\3\2\2\2]\13\3\2\2\2^\\\3\2\2\2_`\7*\2\2`\r\3\2\2\2af"+
+		"\5\20\t\2bc\7\37\2\2ce\5\20\t\2db\3\2\2\2eh\3\2\2\2fd\3\2\2\2fg\3\2\2"+
+		"\2g\17\3\2\2\2hf\3\2\2\2ij\7\"\2\2jr\7+\2\2kl\7#\2\2lr\7+\2\2mn\7$\2\2"+
+		"nr\7+\2\2op\7%\2\2pr\7+\2\2qi\3\2\2\2qk\3\2\2\2qm\3\2\2\2qo\3\2\2\2r\21"+
+		"\3\2\2\2sx\5\24\13\2tu\7\37\2\2uw\5\24\13\2vt\3\2\2\2wz\3\2\2\2xv\3\2"+
+		"\2\2xy\3\2\2\2y\23\3\2\2\2zx\3\2\2\2{|\t\3\2\2|\25\3\2\2\2\7L\\fqx";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

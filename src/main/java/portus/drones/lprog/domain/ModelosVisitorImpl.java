@@ -1,5 +1,8 @@
 package portus.drones.lprog.domain;
 
+import portus.drones.lprog.parsers.ModelosParser;
+import portus.drones.lprog.visitors.ModelosBaseVisitor;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

@@ -1,5 +1,6 @@
-// Generated from Modelos.g4 by ANTLR 4.7.2
+package portus.drones.lprog.visitors;// Generated from Modelos.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
+import portus.drones.lprog.parsers.ModelosParser;
 
 /**
  * This interface defines a complete generic visitor for a parse tree produced

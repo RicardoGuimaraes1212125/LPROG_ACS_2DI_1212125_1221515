@@ -64,3 +64,14 @@ drone "BurroDeCarga" {
   proxima_manutencao: 2025-12-01
 }
 
+drone "TungTungSahur" {
+  numero_serie: 654543
+  modelo: "LightDroneX"
+  peso_base: 5.0 kg
+  bateria_atual: 90.0 %
+  estado: ativo
+  horas_voo: 20.0
+  ultima_manutencao: 2002-07-31
+  proxima_manutencao: 2026-07-31
+}
+

@@ -7,6 +7,10 @@ import org.antlr.v4.runtime.*;
 
 
 import portus.drones.lprog.domain.*;
+import portus.drones.lprog.lexers.DronesLexer;
+import portus.drones.lprog.lexers.ModelosLexer;
+import portus.drones.lprog.parsers.DronesParser;
+import portus.drones.lprog.parsers.ModelosParser;
 
 
 public class FrotaService {

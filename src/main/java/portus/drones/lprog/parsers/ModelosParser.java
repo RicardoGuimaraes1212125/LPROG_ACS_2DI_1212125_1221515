@@ -1,12 +1,13 @@
+package portus.drones.lprog.parsers;
 // Generated from Modelos.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.misc.*;
 import org.antlr.v4.runtime.tree.*;
+import portus.drones.lprog.listeners.ModelosListener;
+import portus.drones.lprog.visitors.ModelosVisitor;
+
 import java.util.List;
-import java.util.Iterator;
-import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class ModelosParser extends Parser {
@@ -126,7 +127,7 @@ public class ModelosParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_modelo; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ModelosListener ) ((ModelosListener)listener).enterModelo(this);
+			if ( listener instanceof ModelosListener) ((ModelosListener)listener).enterModelo(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
@@ -134,7 +135,7 @@ public class ModelosParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ModelosVisitor ) return ((ModelosVisitor<? extends T>)visitor).visitModelo(this);
+			if ( visitor instanceof ModelosVisitor) return ((ModelosVisitor<? extends T>)visitor).visitModelo(this);
 			else return visitor.visitChildren(this);
 		}
 	}

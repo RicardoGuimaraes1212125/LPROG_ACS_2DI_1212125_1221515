@@ -1,0 +1,11 @@
+drone "PT35BiqueiraLarga" {
+  numero_serie: 857475
+  modelo: "RTX1060"
+  peso_base: 20.0 kg
+  bateria_atual: 100.0 %
+  estado: ativo
+  horas_voo: 300.0
+  ultima_manutencao: 2025-03-01
+  proxima_manutencao: 2025-09-01
+}
+

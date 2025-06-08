@@ -1,4 +1,4 @@
-// Generated from Frota.g4 by ANTLR 4.9.2
+// Generated from Frota.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -36,6 +36,16 @@ public interface FrotaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitEstado(FrotaParser.EstadoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link FrotaParser#drones}.
+	 * @param ctx the parse tree
+	 */
+	void enterDrones(FrotaParser.DronesContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link FrotaParser#drones}.
+	 * @param ctx the parse tree
+	 */
+	void exitDrones(FrotaParser.DronesContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link FrotaParser#modelo}.
 	 * @param ctx the parse tree
@@ -116,4 +126,14 @@ public interface FrotaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitRestricao(FrotaParser.RestricaoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link FrotaParser#modelos}.
+	 * @param ctx the parse tree
+	 */
+	void enterModelos(FrotaParser.ModelosContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link FrotaParser#modelos}.
+	 * @param ctx the parse tree
+	 */
+	void exitModelos(FrotaParser.ModelosContext ctx);
 }

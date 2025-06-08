@@ -1,5 +1,7 @@
-// Generated from Drones.g4 by ANTLR 4.9.2
+package portus.drones.lprog.listeners;
+// Generated from Drones.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.tree.ParseTreeListener;
+import portus.drones.lprog.parsers.DronesParser;
 
 /**
  * This interface defines a complete listener for a parse tree produced by
@@ -26,6 +28,16 @@ public interface DronesListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitEstado(DronesParser.EstadoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link DronesParser#drones}.
+	 * @param ctx the parse tree
+	 */
+	void enterDrones(DronesParser.DronesContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link DronesParser#drones}.
+	 * @param ctx the parse tree
+	 */
+	void exitDrones(DronesParser.DronesContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link DronesParser#modelo}.
 	 * @param ctx the parse tree
@@ -106,4 +118,14 @@ public interface DronesListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitRestricao(DronesParser.RestricaoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link DronesParser#modelos}.
+	 * @param ctx the parse tree
+	 */
+	void enterModelos(DronesParser.ModelosContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link DronesParser#modelos}.
+	 * @param ctx the parse tree
+	 */
+	void exitModelos(DronesParser.ModelosContext ctx);
 }

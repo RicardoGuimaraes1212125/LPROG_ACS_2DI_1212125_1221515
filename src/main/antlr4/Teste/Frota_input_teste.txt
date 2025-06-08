@@ -1,0 +1,10 @@
+drone "PT37" {
+  numero_serie: 857476
+  modelo: "RTX1060"
+  peso_base: 20.0 kg
+  bateria_atual: 50.0 %
+  estado: Inativo
+  horas_voo: 350.0
+  ultima_manutencao: 2025-03-01
+  proxima_manutencao: 2025-09-01
+}

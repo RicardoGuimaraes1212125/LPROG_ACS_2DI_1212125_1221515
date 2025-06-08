@@ -16,6 +16,10 @@ drone          : 'drone' STRING '{'
 
 estado         : 'ativo' | 'manutencao' | 'inativo' | 'em_missao' ;
 
+drones : drone* EOF;
+
+
 // Tokens herdados de Modelos.g4:
 // STRING, NUM, WS
-DATA           : [0-9][0-9][0-9][0-9] '-' ([1][0-2]|[0][1-9]) '-' ([0][1-9]|[12][0-9]|[30]|[31]) ;
+DATA : [0-9][0-9][0-9][0-9] '-' ('0'[1-9] | '1'[0-2]) '-' ('0'[1-9] | [12][0-9] | '30' | '31') ;
+

@@ -1,5 +1,6 @@
-// Generated from Drones.g4 by ANTLR 4.9.2
+package portus.drones.lprog.visitors;// Generated from Drones.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
+import portus.drones.lprog.parsers.DronesParser;
 
 /**
  * This class provides an empty implementation of {@link DronesVisitor},
@@ -24,6 +25,13 @@ public class DronesBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitEstado(DronesParser.EstadoContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitDrones(DronesParser.DronesContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -80,4 +88,11 @@ public class DronesBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitRestricao(DronesParser.RestricaoContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitModelos(DronesParser.ModelosContext ctx) { return visitChildren(ctx); }
 }

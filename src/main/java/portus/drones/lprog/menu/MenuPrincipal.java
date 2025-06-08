@@ -24,7 +24,7 @@ public class MenuPrincipal implements Runnable {
                     new MenuMissoes().run();
                     break;
                 case "2":
-                    // Implementar lógica para listar drones
+                    new MenuFrota().run();
                     break;
                 case "3":
                     return; // Sair do loop e encerrar o programa

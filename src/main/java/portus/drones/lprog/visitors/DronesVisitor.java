@@ -1,5 +1,6 @@
-// Generated from Drones.g4 by ANTLR 4.9.2
+package portus.drones.lprog.visitors;// Generated from Drones.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
+import portus.drones.lprog.parsers.DronesParser;
 
 /**
  * This interface defines a complete generic visitor for a parse tree produced
@@ -21,6 +22,12 @@ public interface DronesVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitEstado(DronesParser.EstadoContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link DronesParser#drones}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDrones(DronesParser.DronesContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link DronesParser#modelo}.
 	 * @param ctx the parse tree
@@ -69,4 +76,10 @@ public interface DronesVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitRestricao(DronesParser.RestricaoContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link DronesParser#modelos}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitModelos(DronesParser.ModelosContext ctx);
 }

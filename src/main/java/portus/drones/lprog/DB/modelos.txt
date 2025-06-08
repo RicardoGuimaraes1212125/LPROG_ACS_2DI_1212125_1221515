@@ -1,0 +1,41 @@
+modelo "LightDroneX" {
+  capacidade: 5 kg
+  autonomia: 30 min
+  velocidade: {
+    cruzeiro: 40 km/h
+    subida: 10 km/h
+    descida: 15 km/h
+  }
+  sensores: camera, gps
+  certificacoes: CE, ANAC
+  limites: max_horas_voo=500, max_altitude=200, min_bateria=20, max_peso=7
+  restricoes: voo_diurno
+}
+
+modelo "HeavyDroneZ" {
+  capacidade: 10 kg
+  autonomia: 45 min
+  velocidade: {
+    cruzeiro: 50 km/h
+    subida: 15 km/h
+    descida: 20 km/h
+  }
+  sensores: lidar, gps
+  certificacoes: CE
+  limites: max_horas_voo=600, max_altitude=300, min_bateria=25, max_peso=12
+  restricoes: voo_diurno, voo_noturno
+}
+
+modelo "modeloX" {
+  capacidade: 10kg
+  autonomia: 30min
+  velocidade: {
+    cruzeiro: 40km/h
+    subida: 20km/h
+    descida: 25km/h
+  }
+  sensores: gps, camera
+  certificacoes: A, B
+  limites: max_horas_voo=600, max_altitude=300, min_bateria=25, max_peso=12
+  restricoes: voo_diurno
+}

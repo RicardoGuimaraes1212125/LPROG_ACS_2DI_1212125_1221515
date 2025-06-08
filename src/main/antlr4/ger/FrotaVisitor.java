@@ -1,4 +1,4 @@
-// Generated from Frota.g4 by ANTLR 4.9.2
+// Generated from Frota.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -27,6 +27,12 @@ public interface FrotaVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitEstado(FrotaParser.EstadoContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link FrotaParser#drones}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDrones(FrotaParser.DronesContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link FrotaParser#modelo}.
 	 * @param ctx the parse tree
@@ -75,4 +81,10 @@ public interface FrotaVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitRestricao(FrotaParser.RestricaoContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link FrotaParser#modelos}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitModelos(FrotaParser.ModelosContext ctx);
 }

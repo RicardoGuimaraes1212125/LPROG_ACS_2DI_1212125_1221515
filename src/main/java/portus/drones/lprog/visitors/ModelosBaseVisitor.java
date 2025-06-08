@@ -1,5 +1,6 @@
-// Generated from Modelos.g4 by ANTLR 4.9.2
+package portus.drones.lprog.visitors;// Generated from Modelos.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
+import portus.drones.lprog.parsers.ModelosParser;
 
 /**
  * This class provides an empty implementation of {@link ModelosVisitor},
@@ -66,4 +67,11 @@ public class ModelosBaseVisitor<T> extends AbstractParseTreeVisitor<T> implement
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitRestricao(ModelosParser.RestricaoContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitModelos(ModelosParser.ModelosContext ctx) { return visitChildren(ctx); }
 }

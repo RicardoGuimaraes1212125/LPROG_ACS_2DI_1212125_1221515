@@ -1,5 +1,7 @@
-// Generated from Modelos.g4 by ANTLR 4.9.2
+package portus.drones.lprog.listeners;
+// Generated from Modelos.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.tree.ParseTreeListener;
+import portus.drones.lprog.parsers.ModelosParser;
 
 /**
  * This interface defines a complete listener for a parse tree produced by
@@ -86,4 +88,14 @@ public interface ModelosListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitRestricao(ModelosParser.RestricaoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ModelosParser#modelos}.
+	 * @param ctx the parse tree
+	 */
+	void enterModelos(ModelosParser.ModelosContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ModelosParser#modelos}.
+	 * @param ctx the parse tree
+	 */
+	void exitModelos(ModelosParser.ModelosContext ctx);
 }

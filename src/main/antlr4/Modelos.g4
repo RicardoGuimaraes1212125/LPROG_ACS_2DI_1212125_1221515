@@ -28,6 +28,8 @@ limite         : 'max_horas_voo=' NUM
 restricoes     : restricao (',' restricao)* ;
 restricao      : 'voo_diurno' | 'voo_noturno' ;
 
+modelos : modelo* EOF;
+
 // Tokens
 STRING         : '"' (~["\r\n])* '"' ;
 ID             : [a-zA-Z_][a-zA-Z_0-9]* ;

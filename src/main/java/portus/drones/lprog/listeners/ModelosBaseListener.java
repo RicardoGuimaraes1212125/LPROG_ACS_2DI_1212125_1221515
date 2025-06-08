@@ -1,8 +1,10 @@
-// Generated from Modelos.g4 by ANTLR 4.9.2
+package portus.drones.lprog.listeners;
+// Generated from Modelos.g4 by ANTLR 4.7.2
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
+import portus.drones.lprog.parsers.ModelosParser;
 
 /**
  * This class provides an empty implementation of {@link ModelosListener},
@@ -106,6 +108,18 @@ public class ModelosBaseListener implements ModelosListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitRestricao(ModelosParser.RestricaoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterModelos(ModelosParser.ModelosContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitModelos(ModelosParser.ModelosContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

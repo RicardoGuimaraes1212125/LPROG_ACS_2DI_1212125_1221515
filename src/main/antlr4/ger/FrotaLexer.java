@@ -1,13 +1,15 @@
-package portus.drones.lprog.lexers;
-// Generated from Drones.g4 by ANTLR 4.7.2
+// Generated from Frota.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.Token;
+import org.antlr.v4.runtime.TokenStream;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
+import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class DronesLexer extends Lexer {
+public class FrotaLexer extends Lexer {
 	static { RuntimeMetaData.checkVersion("4.7.2", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -95,13 +97,13 @@ public class DronesLexer extends Lexer {
 	}
 
 
-	public DronesLexer(CharStream input) {
+	public FrotaLexer(CharStream input) {
 		super(input);
 		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	@Override
-	public String getGrammarFileName() { return "Drones.g4"; }
+	public String getGrammarFileName() { return "Frota.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }

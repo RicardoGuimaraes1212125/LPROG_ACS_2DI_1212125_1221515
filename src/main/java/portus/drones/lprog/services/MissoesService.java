@@ -188,4 +188,15 @@ public class MissoesService {
             System.out.println((i + 1) + ". " + missao.toString());
         }
     }
+
+    public double getDistanciaTotalPorMissao(String nomeMissao) {
+        for (Missao m : missoes) {
+            if (m.getNome().equalsIgnoreCase(nomeMissao)) {
+                return m.getEntregas().stream()
+                        .mapToDouble(Entrega::getDistancia)
+                        .sum();
+            }
+        }
+        return -1; // Missão não encontrada
+    }
 }

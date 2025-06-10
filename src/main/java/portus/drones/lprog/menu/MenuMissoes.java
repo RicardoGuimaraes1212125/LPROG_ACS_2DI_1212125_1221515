@@ -18,13 +18,14 @@ public class MenuMissoes implements Runnable {
         while (true) {
             System.out.println("\n\n\n\n\n\n\n");
             System.out.println("-------- Gerir missões --------");
-            System.out.println("1. Upload missão a partir de ficheiro");
+            System.out.println("1. Carregar missão a partir de ficheiro");
             System.out.println("2. Eliminar missão");
-            System.out.println("3. Exportar missões para ficheiro");
-            System.out.println("4. Listar missões");
+            System.out.println("3. Listar missões");
+            System.out.println("4. Exportar missões para ficheiro");
             System.out.println("5. Ver distância total de uma missão");
             System.out.println("6. Ver tempo estimado de uma missão");
-            System.out.println("7. Retroceder");
+            System.out.println("7. Validar uma missão");
+            System.out.println("8. Retroceder");
 
             System.out.print("\n\nEscolha uma opção: ");
 
@@ -38,9 +39,10 @@ public class MenuMissoes implements Runnable {
                     removeMissao();
                     break;
                 case "3":
-                    exportMissoesToFile();
-                case "4":
                     listMissoes();
+                    break;
+                case "4":
+                    exportMissoesToFile();
                     break;
                 case "5":
                     calculateMissaoDistance();
@@ -49,6 +51,9 @@ public class MenuMissoes implements Runnable {
                     calculateMissaoEstimatedTime();
                     break;
                 case "7":
+                    validateMissao();
+                    break;
+                case "8":
                     return;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
@@ -92,7 +97,7 @@ public class MenuMissoes implements Runnable {
             name = System.console().readLine();
         }
 
-        missoesService.clearMissao(name);
+        missoesService.removeMissao(name);
     }
 
     private void listMissoes() {
@@ -108,7 +113,7 @@ public class MenuMissoes implements Runnable {
             name = System.console().readLine();
         }
 
-        double totalDistance = missoesService.getDistanciaTotalPorMissao(name.trim());
+        double totalDistance = missoesService.calculateMissaoDistance(name.trim());
 
         if (totalDistance >= 0) {
             System.out.printf("Distância total da missão \"%s\": %.2f km\n", name, totalDistance);
@@ -133,5 +138,18 @@ public class MenuMissoes implements Runnable {
         } else {
             System.out.println("Missão não encontrada.");
         }
+    }
+
+
+    private void validateMissao() {
+        System.out.print("Introduza o nome da missão: ");
+        String name = System.console().readLine();
+
+        while (name == null || name.trim().isEmpty()) {
+            System.out.print("Nome não pode estar vazio. Por favor, tente novamente: ");
+            name = System.console().readLine();
+        }
+
+        missoesService.validateMissao(name);
     }
 }

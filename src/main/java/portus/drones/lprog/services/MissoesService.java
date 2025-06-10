@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.antlr.v4.runtime.BaseErrorListener;
@@ -162,30 +163,26 @@ public class MissoesService {
      * Remove a missao by name
      * @param name the name of the missao to remove
      */
-    public void clearMissao(String name) {
-        if (name == null || name.trim().isEmpty()) {
-            System.out.println("Nome da missão não pode estar vazio.");
-            return;
-        }
+    public void removeMissao(String name) {
 
-        Missao missaoToRemove = missoes
+        Missao missao = missoes
                 .stream()
                 .filter(m -> m.getNome().equals(name))
                 .findFirst()
                 .orElse(null);
 
-        if (missaoToRemove == null) {
+        if (missao == null) {
             System.out.println("✗ Missão não encontrada.");
             return;
         }
 
-        if (missaoToRemove.getEstado() == EstadoMissao.EM_CURSO) {
+        if (missao.getEstado() == EstadoMissao.EM_CURSO) {
             System.out.println("✗ Missão não pode ser removida pois encontra-se em curso.");
             return;
         }
 
 
-        missoes.remove(missaoToRemove);
+        missoes.remove(missao);
         System.out.println("✓ Missão removida com sucesso.");
     }
 
@@ -201,10 +198,11 @@ public class MissoesService {
         missoes.forEach(System.out::println);
     }
 
-    public double getDistanciaTotalPorMissao(String nomeMissao) {
+    public double calculateMissaoDistance(String nomeMissao) {
         for (Missao m : missoes) {
             if (m.getNome().equalsIgnoreCase(nomeMissao)) {
-                return m.getEntregas().stream()
+                return m.getEntregas()
+                        .stream()
                         .mapToDouble(Entrega::getDistancia)
                         .sum();
             }
@@ -213,7 +211,8 @@ public class MissoesService {
     }
 
     public double calculateMissaoEstimatedTime(String nomeMissao) {
-        Missao missao = missoes.stream()
+        Missao missao = missoes
+                .stream()
                 .filter(m -> m.getNome().equalsIgnoreCase(nomeMissao))
                 .findFirst()
                 .orElse(null);
@@ -252,5 +251,77 @@ public class MissoesService {
             return totalDistance / cruiseSpeed;
         }
         return -1;
+    }
+
+
+    public void validateMissao(String nomeMissao) {
+        Missao missao = missoes
+                .stream()
+                .filter(m -> m.getNome().equalsIgnoreCase(nomeMissao))
+                .findFirst()
+                .orElse(null);
+
+
+        if (missao == null) {
+            System.out.println("Missão não encontrada.");
+            return;
+        }
+
+
+        String droneName = missao.getDrone();
+        Drone drone = drones
+                .stream()
+                .filter(d -> d.getNome().equalsIgnoreCase(droneName))
+                .findFirst()
+                .orElse(null);
+
+        if (drone == null) {
+            System.out.println("Drone não encontrado.");
+            return;
+        }
+
+        String modeloName = drone.getModelo();
+        Modelo modelo = modelos
+                .stream()
+                .filter(m -> m.getNome().equalsIgnoreCase(modeloName))
+                .findFirst()
+                .orElse(null);
+
+        if (modelo == null) {
+            System.out.println("Modelo do drone não encontrado.");
+            return;
+        }
+
+        double cruiseSpeed = modelo.getVelocidadeCruzeiro();
+        double rangeInMinutes = modelo.getAutonomiaMin();
+        double rangeInKms = (rangeInMinutes / 60) * cruiseSpeed;
+
+        double missaoTotalDistance = missao
+                .getEntregas()
+                .stream()
+                .mapToDouble(Entrega::getDistancia)
+                .sum();
+
+        boolean hasSufficientRange = rangeInKms >= missaoTotalDistance;
+
+        if (!hasSufficientRange) {
+            System.out.println("✗ Alcance insuficiente para a missão.");
+            return;
+        }
+
+
+        LocalTime horaInicio = LocalTime.parse(missao.getInicio());
+        boolean isMissaoAtNighTime = horaInicio.getHour() >= 20 || horaInicio.getHour() < 6;
+        boolean nightTimeFlightPermitted = modelo
+                .getRestricoes()
+                .stream()
+                .anyMatch(r -> r.toLowerCase().contains("voo_noturno"));
+
+        if (isMissaoAtNighTime && !nightTimeFlightPermitted) {
+            System.out.println("✗ Missão decorre de noite e o drone não pode voar à noite.");
+            return;
+        }
+
+        System.out.println("✓ Missão é valida e pode ser executada. Nenhuma restrição encontrada.");
     }
 }

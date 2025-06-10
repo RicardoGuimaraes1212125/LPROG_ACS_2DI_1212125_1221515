@@ -23,6 +23,7 @@ public class MenuMissoes implements Runnable {
             System.out.println("4. Exportar missões para ficheiro");
             System.out.println("5. Listar missões");
             System.out.println("6. Retroceder");
+            System.out.println("7. Ver distância total de uma missão");
 
             System.out.print("\n\nEscolha uma opção: ");
 
@@ -45,6 +46,9 @@ public class MenuMissoes implements Runnable {
                     break;
                 case "6":
                     return;
+                case "7":
+                    mostrarDistanciaTotal();
+                    break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
             }
@@ -104,5 +108,23 @@ public class MenuMissoes implements Runnable {
 
     private void listMissoes() {
         missoesService.listMissoes();
+    }
+
+    private void mostrarDistanciaTotal() {
+        System.out.print("Introduza o nome da missão: ");
+        String nome = System.console().readLine();
+
+        while (nome == null || nome.trim().isEmpty()) {
+            System.out.print("Nome não pode estar vazio. Por favor, tente novamente: ");
+            nome = System.console().readLine();
+        }
+
+        double total = missoesService.getDistanciaTotalPorMissao(nome.trim());
+
+        if (total >= 0) {
+            System.out.printf("Distância total da missão \"%s\": %.2f km\n", nome, total);
+        } else {
+            System.out.println("Missão não encontrada.");
+        }
     }
 }

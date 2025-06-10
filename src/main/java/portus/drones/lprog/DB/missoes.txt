@@ -1,6 +1,6 @@
 missao "Entrega Urgente Porto" {
     inicio: 08:30
-    drone: "Drone-X1000"
+    drone: "drone123"
     estado: planeada
     rota: [
         {
@@ -38,7 +38,7 @@ missao "Entrega Urgente Porto" {
 
 missao "Entrega Noturna Lisboa" {
     inicio: 22:15
-    drone: "Drone-X2000"
+    drone: "droneAlpha"
     estado: em_curso
     rota: [
         {

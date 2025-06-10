@@ -82,12 +82,31 @@ public class Missao {
 
     @Override
     public String toString() {
-        return "Missao{" +
-                "nome='" + nome + '\'' +
-                ", hora='" + inicio + '\'' +
-                ", drone='" + drone + '\'' +
-                ", estado=" + estado.toString() +
-                ", entregas=" + entregas.toString() +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append(nome)
+          .append(" às ").append(inicio)
+          .append(" com o drone ").append(drone)
+          .append(" com o estado ").append(estado != null ? estado.toString().toLowerCase() : "")
+          .append(".\n");
+        sb.append("Rotas:\n");
+        if (entregas != null) {
+            for (int i = 0; i < entregas.size(); i++) {
+                Entrega entrega = entregas.get(i);
+                sb.append(i + 1).append(" - ")
+                  .append(entrega.getOrigem().getNome())
+                  .append(" (").append(entrega.getOrigem().getLatitude()).append(", ")
+                  .append(entrega.getOrigem().getLongitude()).append(") até ")
+                  .append(entrega.getDestino().getNome())
+                  .append(" (").append(entrega.getDestino().getLatitude()).append(", ")
+                  .append(entrega.getDestino().getLongitude()).append(") com ")
+                  .append(entrega.getPeso())
+                  .append("kg, ")
+                  .append(entrega.getAltitude())
+                  .append("m de altitude e ")
+                  .append(entrega.getDistancia())
+                  .append("km de distancia\n");
+            }
+        }
+        return sb.toString();
     }
 }

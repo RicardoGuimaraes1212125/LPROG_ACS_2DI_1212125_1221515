@@ -8,6 +8,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
+import static portus.drones.lprog.domain.Frota.modelos;
+
 public class MenuFrota implements Runnable {
     private final FrotaService frotaService = new FrotaService();
     private final Scanner sc = new Scanner(System.in);
@@ -16,7 +18,7 @@ public class MenuFrota implements Runnable {
     public void run() {
         String option;
         do {
-            System.out.println("\n-------- PORTUS DRONES --------");
+            System.out.println("\n-------- Gerir frota --------");
             System.out.println("1. Carregar Modelos de Ficheiro");
             System.out.println("2. Carregar Frota de Ficheiro");
             System.out.println("3. Listar Drones");
@@ -50,7 +52,7 @@ public class MenuFrota implements Runnable {
                 case "3" -> frotaService.listarDrones();
 
                 case "4" -> {
-                    List<Modelo> modelos = frotaService.getModelos();
+
                     if (modelos.isEmpty()) {
                         System.out.println("Carregue primeiro os modelos (opção 1).");
                         break;

@@ -1,8 +1,8 @@
-package portus.drones.lprog.domain;
+package portus.drones.lprog.visitors;
 
 
+import portus.drones.lprog.domain.Drone;
 import portus.drones.lprog.parsers.DronesParser;
-import portus.drones.lprog.visitors.DronesBaseVisitor;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

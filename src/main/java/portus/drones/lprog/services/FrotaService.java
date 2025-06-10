@@ -2,7 +2,7 @@ package portus.drones.lprog.services;
 
 import java.io.*;
 import java.nio.file.*;
-import java.util.*;
+
 import org.antlr.v4.runtime.*;
 
 
@@ -11,11 +11,14 @@ import portus.drones.lprog.lexers.DronesLexer;
 import portus.drones.lprog.lexers.ModelosLexer;
 import portus.drones.lprog.parsers.DronesParser;
 import portus.drones.lprog.parsers.ModelosParser;
+import portus.drones.lprog.visitors.DronesVisitorImpl;
+import portus.drones.lprog.visitors.ModelosVisitorImpl;
+
+import static portus.drones.lprog.domain.Frota.drones;
+import static portus.drones.lprog.domain.Frota.modelos;
 
 
 public class FrotaService {
-    private final List<Drone> drones = new ArrayList<>();
-    private final List<Modelo> modelos = new ArrayList<>();
 
     public void carregarModelos(String caminho) throws IOException {
         String input = Files.readString(Path.of(caminho));
@@ -26,8 +29,8 @@ public class FrotaService {
         ModelosVisitorImpl visitor = new ModelosVisitorImpl();
         visitor.visit(tree);
 
-        this.modelos.clear();
-        this.modelos.addAll(visitor.modelos);
+        modelos.clear();
+        modelos.addAll(visitor.modelos);
         System.out.println("Modelos carregados: " + modelos.size());
     }
 
@@ -40,8 +43,8 @@ public class FrotaService {
         DronesVisitorImpl visitor = new DronesVisitorImpl();
         visitor.visit(tree);
 
-        this.drones.clear();
-        this.drones.addAll(visitor.drones);
+        drones.clear();
+        drones.addAll(visitor.drones);
         System.out.println("Drones carregados: " + drones.size());
     }
 
@@ -71,16 +74,13 @@ public class FrotaService {
         modelos.forEach(System.out::println);
     }
 
-    public List<Modelo> getModelos() {
-        return modelos;
-    }
-
     public void adicionarDrone(Drone d) {
         drones.add(d);
     }
 
     public Modelo getModeloPorNome(String nome) {
-        return modelos.stream()
+        return modelos
+                .stream()
                 .filter(m -> m.getNome().equalsIgnoreCase(nome))
                 .findFirst()
                 .orElse(null);

@@ -12,20 +12,37 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.Recognizer;
 
-import org.antlr.v4.runtime.tree.ParseTree;
+import portus.drones.lprog.domain.Drone;
+import portus.drones.lprog.domain.Modelo;
 import portus.drones.lprog.domain.entrega.Entrega;
 import portus.drones.lprog.domain.entrega.Localizacao;
 import portus.drones.lprog.domain.missao.EstadoMissao;
-import portus.drones.lprog.domain.missao.Missoes;
+import portus.drones.lprog.domain.missao.Missao;
+
+import static portus.drones.lprog.domain.Frota.drones;
+import static portus.drones.lprog.domain.Frota.modelos;
+import static portus.drones.lprog.domain.missao.Missoes.missoes;
 import portus.drones.lprog.lexers.MissoesLexer;
 import portus.drones.lprog.parsers.MissoesParser;
-import portus.drones.lprog.domain.missao.Missao;
 import portus.drones.lprog.visitors.MissoesModelVisitor;
-
-import static portus.drones.lprog.domain.missao.Missoes.missoes;
 
 
 public class MissoesService {
+
+
+    /**
+     * Loads missions from a default file when the program starts
+     */
+    public void loadMissoesOnProgramStart() {
+        // Load missions from the default file if it exists
+        String defaultFilePath = "src/main/java/portus/drones/lprog/DB/missoes.txt";
+        if (Files.exists(Paths.get(defaultFilePath))) {
+            loadMissoesFromFile(defaultFilePath);
+            System.out.println("(missoes carregadas automaticamente do ficheiro: " + defaultFilePath + ")");
+        } else {
+            System.out.println("✗ Nenhum ficheiro de missões encontrado. Inicie com um ficheiro vazio.");
+        }
+    }
 
     /**
      * Loads missions from a file
@@ -176,15 +193,12 @@ public class MissoesService {
      * Lists all missions
      */
     public void listMissoes() {
-        if (Missoes.getMissoes().isEmpty()) {
+        if (missoes.isEmpty()) {
             System.out.println("✗ Sem missões carregadas.");
             return;
         }
         
-        for (int i = 0; i < Missoes.getMissoes().size(); i++) {
-            Missao missao = Missoes.getMissoes().get(i);
-            System.out.println((i + 1) + ". " + missao.toString());
-        }
+        missoes.forEach(System.out::println);
     }
 
     public double getDistanciaTotalPorMissao(String nomeMissao) {
@@ -196,5 +210,47 @@ public class MissoesService {
             }
         }
         return -1; // Missão não encontrada
+    }
+
+    public double calculateMissaoEstimatedTime(String nomeMissao) {
+        Missao missao = missoes.stream()
+                .filter(m -> m.getNome().equalsIgnoreCase(nomeMissao))
+                .findFirst()
+                .orElse(null);
+
+        if (missao != null) {
+            String nomeDrone = missao.getDrone();
+
+            Drone drone = drones
+                    .stream()
+                    .filter(d -> d.getNome().equalsIgnoreCase(nomeDrone))
+                    .findFirst()
+                    .orElse(null);
+
+            if (drone == null) return -1;
+
+            String nomeModelo = drone.getModelo();
+
+            Modelo modelo = modelos
+                    .stream()
+                    .filter(m -> m.getNome().equalsIgnoreCase(nomeModelo))
+                    .findFirst()
+                    .orElse(null);
+
+            if (modelo == null) return -1;
+
+            double cruiseSpeed = modelo.getVelocidadeCruzeiro();
+
+            if (cruiseSpeed <= 0) return -1;
+
+            double totalDistance = missao
+                    .getEntregas()
+                    .stream()
+                    .mapToDouble(Entrega::getDistancia)
+                    .sum();
+
+            return totalDistance / cruiseSpeed;
+        }
+        return -1;
     }
 }

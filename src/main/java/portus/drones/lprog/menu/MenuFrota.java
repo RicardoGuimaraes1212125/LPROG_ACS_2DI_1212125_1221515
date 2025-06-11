@@ -16,6 +16,15 @@ public class MenuFrota implements Runnable {
 
     @Override
     public void run() {
+
+        try {
+            frotaService.carregarModelos("src/main/java/portus/drones/lprog/db/modelos.txt");
+            frotaService.carregarDrones("src/main/java/portus/drones/lprog/db/frota.txt");
+            System.out.println("✓ Modelos e Drones carregados com sucesso.");
+        } catch (Exception e) {
+            System.out.println("✗ Erro ao carregar Modelo e/ou Drones: " + e.getMessage());
+        }
+
         String option;
         do {
             System.out.println("\n-------- Gerir frota --------");
@@ -26,8 +35,8 @@ public class MenuFrota implements Runnable {
             System.out.println("5. Exportar Frota para Ficheiro");
             System.out.println("6. Listar Modelos");
             System.out.println("7. Consultar Modelo por Nome");
-            System.out.println("8. Sair");
-            System.out.println("9. Eliminar Drone");
+            System.out.println("8. Eliminar Drone");
+            System.out.println("9. Sair");
             System.out.print("Escolha uma opção: ");
 
             option = sc.nextLine();
@@ -117,7 +126,7 @@ public class MenuFrota implements Runnable {
                     }
                 }
 
-                case "9" -> {
+                case "8" -> {
                     System.out.print("Nome do drone a eliminar: ");
                     String nome = sc.nextLine().trim();
 
@@ -129,6 +138,6 @@ public class MenuFrota implements Runnable {
                 }
 
             }
-        } while (!option.equals("8"));
+        } while (!option.equals("9"));
     }
 }

@@ -1,5 +1,7 @@
+// Generated from Drones.g4 by ANTLR 4.9.2
 package portus.drones.lprog.parsers;
-// Generated from Drones.g4 by ANTLR 4.7.2
+
+
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -11,7 +13,7 @@ import java.util.List;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class DronesParser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.7.2", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.9.2", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -128,7 +130,7 @@ public class DronesParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_drone; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DronesListener) ((DronesListener)listener).enterDrone(this);
+			if ( listener instanceof DronesListener ) ((DronesListener)listener).enterDrone(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
@@ -136,7 +138,7 @@ public class DronesParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DronesVisitor) return ((DronesVisitor<? extends T>)visitor).visitDrone(this);
+			if ( visitor instanceof DronesVisitor ) return ((DronesVisitor<? extends T>)visitor).visitDrone(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -272,11 +274,11 @@ public class DronesParser extends Parser {
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DronesListener ) ((DronesListener)listener).exitDrones(this);
+			if ( listener instanceof DronesListener) ((DronesListener)listener).exitDrones(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DronesVisitor ) return ((DronesVisitor<? extends T>)visitor).visitDrones(this);
+			if ( visitor instanceof DronesVisitor) return ((DronesVisitor<? extends T>)visitor).visitDrones(this);
 			else return visitor.visitChildren(this);
 		}
 	}

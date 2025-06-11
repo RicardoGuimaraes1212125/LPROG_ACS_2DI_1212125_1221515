@@ -1,5 +1,7 @@
+// Generated from Modelos.g4 by ANTLR 4.9.2
 package portus.drones.lprog.lexers;
-// Generated from Modelos.g4 by ANTLR 4.7.2
+
+
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.*;
@@ -8,7 +10,7 @@ import org.antlr.v4.runtime.dfa.DFA;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class ModelosLexer extends Lexer {
-	static { RuntimeMetaData.checkVersion("4.7.2", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.9.2", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =

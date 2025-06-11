@@ -70,7 +70,7 @@ public class MenuMissoes implements Runnable {
             System.out.print("Caminho do ficheiro não pode estar vazio. Por favor, tente novamente: ");
             filePath = System.console().readLine();
         }
-        
+
         missoesService.loadMissoesFromFile(filePath.trim());
     }
 

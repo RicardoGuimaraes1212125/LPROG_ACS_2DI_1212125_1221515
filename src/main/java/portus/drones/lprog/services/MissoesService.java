@@ -52,15 +52,15 @@ public class MissoesService {
     public void loadMissoesFromFile(String filePath) {
         try {
             String content = new String(Files.readAllBytes(Paths.get(filePath)));
-            
+
             // Create ANTLR input stream
             var input = CharStreams.fromString(content);
-            
+
             MissoesLexer lexer = new MissoesLexer(input);
-            
+
             // Create token stream
             CommonTokenStream tokens = new CommonTokenStream(lexer);
-            
+
             // Create parser
             MissoesParser parser = new MissoesParser(tokens);
 
@@ -78,10 +78,10 @@ public class MissoesService {
             // Create visitor and extract missions
             MissoesModelVisitor visitor = new MissoesModelVisitor();
             List<Missao> loadedMissoes = visitor.visitMissoes(parser.missoes());
-            
+
             // Add to existing missions
             missoes.addAll(loadedMissoes);
-            
+
             System.out.println("✓ " + loadedMissoes.size() + " missões carregadas com sucesso.");
         } catch (Exception e) {
             System.out.println("✗ Erro ao carregar missões: " + e.getMessage());
@@ -194,7 +194,7 @@ public class MissoesService {
             System.out.println("✗ Sem missões carregadas.");
             return;
         }
-        
+
         missoes.forEach(System.out::println);
     }
 

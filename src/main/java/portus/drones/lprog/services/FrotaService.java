@@ -85,4 +85,18 @@ public class FrotaService {
                 .findFirst()
                 .orElse(null);
     }
+
+    public boolean eliminarDrone(String nomeDrone) {
+        if (nomeDrone == null || nomeDrone.isBlank()) return false;
+
+        Drone drone = drones.stream()
+                .filter(d -> d.getNome().equalsIgnoreCase(nomeDrone))
+                .findFirst()
+                .orElse(null);
+
+        if (drone == null) return false;
+
+        drones.remove(drone);
+        return true;
+    }
 }

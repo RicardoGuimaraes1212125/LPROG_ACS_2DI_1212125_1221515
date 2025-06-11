@@ -25,6 +25,7 @@ public class MenuFrota implements Runnable {
             System.out.println("6. Listar Modelos");
             System.out.println("7. Consultar Modelo por Nome");
             System.out.println("8. Sair");
+            System.out.println("9. Eliminar Drone");
             System.out.print("Escolha uma opção: ");
 
             option = sc.nextLine();
@@ -113,6 +114,18 @@ public class MenuFrota implements Runnable {
                         System.out.println("Modelo não encontrado.");
                     }
                 }
+
+                case "9" -> {
+                    System.out.print("Nome do drone a eliminar: ");
+                    String nome = sc.nextLine().trim();
+
+                    if (frotaService.eliminarDrone(nome)) {
+                        System.out.println("✓ Drone \"" + nome + "\" removido com sucesso.");
+                    } else {
+                        System.out.println("✗ Drone não encontrado.");
+                    }
+                }
+
             }
         } while (!option.equals("8"));
     }

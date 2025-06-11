@@ -3,11 +3,19 @@ package portus.drones.lprog.menu;
 
 import portus.drones.lprog.services.MissoesService;
 
+import java.util.List;
+import portus.drones.lprog.domain.Drone;
+import portus.drones.lprog.domain.Modelo;
+
 public class MenuMissoes implements Runnable {
     private final MissoesService missoesService;
+    private final List<Drone> drones;
+    private final List<Modelo> modelos;
 
-    public MenuMissoes() {
+    public MenuMissoes(List<Drone> drones, List<Modelo> modelos) {
         this.missoesService = new MissoesService();
+        this.drones = drones;
+        this.modelos = modelos;
     }
 
     @Override
@@ -64,7 +72,7 @@ public class MenuMissoes implements Runnable {
             System.out.print("Caminho do ficheiro não pode estar vazio. Por favor, tente novamente: ");
             filePath = System.console().readLine();
         }
-        
+
         missoesService.loadMissoesFromFile(filePath.trim());
     }
 

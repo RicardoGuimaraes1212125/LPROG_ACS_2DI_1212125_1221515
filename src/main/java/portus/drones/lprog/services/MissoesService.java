@@ -13,6 +13,8 @@ import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.Recognizer;
 
 import org.antlr.v4.runtime.tree.ParseTree;
+import portus.drones.lprog.domain.Drone;
+import portus.drones.lprog.domain.Modelo;
 import portus.drones.lprog.domain.entrega.Entrega;
 import portus.drones.lprog.domain.entrega.Localizacao;
 import portus.drones.lprog.domain.missao.EstadoMissao;
@@ -31,19 +33,19 @@ public class MissoesService {
      * Loads missions from a file
      * @param filePath path to the file
      * @return true if successful, false otherwise
-     */    
+     */
     public void loadMissoesFromFile(String filePath) {
         try {
             String content = new String(Files.readAllBytes(Paths.get(filePath)));
-            
+
             // Create ANTLR input stream
             var input = CharStreams.fromString(content);
-            
+
             MissoesLexer lexer = new MissoesLexer(input);
-            
+
             // Create token stream
             CommonTokenStream tokens = new CommonTokenStream(lexer);
-            
+
             // Create parser
             MissoesParser parser = new MissoesParser(tokens);
 
@@ -62,10 +64,10 @@ public class MissoesService {
             // Create visitor and extract missions
             MissoesModelVisitor visitor = new MissoesModelVisitor();
             List<Missao> loadedMissoes = visitor.visitMissoes(parser.missoes());
-            
+
             // Add to existing missions
             missoes.addAll(loadedMissoes);
-            
+
             System.out.println("✓ " + loadedMissoes.size() + " missões carregadas com sucesso.");
         } catch (Exception e) {
             System.out.println("✗ Erro ao carregar missões: " + e.getMessage());
@@ -182,7 +184,7 @@ public class MissoesService {
             System.out.println("✗ Sem missões carregadas.");
             return;
         }
-        
+
         for (int i = 0; i < Missoes.getMissoes().size(); i++) {
             Missao missao = Missoes.getMissoes().get(i);
             System.out.println((i + 1) + ". " + missao.toString());

@@ -11,27 +11,39 @@ As gramaticas sao definidas em ANTLR4, e estão localizadas na pasta src.
 A estrutura de cada gramatica é simples e funciona similar a JSON, mas sem virgulas entre os elementos.
 
 
-### [1. Frota](src/main/antlr4/Frota.g4)
+### [1. Modelos](docs/gramaticas/Modelos.g4)
 
-| Regra                  | Descrição                                                                                                                                                                                                                                                                                                                        |
-|------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `frota`                | Define a estrutura geral de uma frota. Uma frota pode consistir em zero ou mais definições de `modelo` (modelo) ou `drone`, seguidas por um marcador de Fim De Ficheiro (EOF).                                                                                                                                                   |
-| `modelo`               | Descreve o projeto ou tipo de um drone. Começa com a palavra-chave 'modelo', seguida por um nome de modelo (STRING). Em seguida, contém detalhes entre chavetas: capacidade, autonomia, especificações de velocidade, uma lista de sensores, limites operacionais e restrições.                                                  |
-| `drone`                | Representa uma instância individual de drone. Começa com a palavra-chave 'drone', seguida por um identificador único para o drone (STRING). Entre chavetas estão o seu número de série, o `modelo` a que pertence, o seu `estado` atual, total de horas de voo, data da última manutenção e data da próxima manutenção agendada. |
-| `sensores`             | Define uma lista de sensores. Consiste em um ou mais identificadores de `sensor`, separados por vírgulas.                                                                                                                                                                                                                        |
-| `sensor`               | Representa um único sensor. É um `ID` (identificador).                                                                                                                                                                                                                                                                           |
-| `limites_operacionais` | Define uma lista de limites operacionais para um modelo de drone. Consiste em uma ou mais definições de `limite`, separadas por vírgulas.                                                                                                                                                                                        |
-| `limite`               | Especifica um único tipo de limite operacional. Agrupa os diferentes tipos de limites possíveis.                                                                                                                                                                                                                                 |
-| `max_horas_voo`        | (Dentro de `limite`) Especifica o máximo de horas de voo contínuo permitido, seguido por um valor `NUM`.                                                                                                                                                                                                                         |
-| `max_altitude`         | (Dentro de `limite`) Especifica a altitude máxima de operação permitida, seguida por um valor `NUM`.                                                                                                                                                                                                                             |
-| `min_bateria`          | (Dentro de `limite`) Especifica o nível mínimo de bateria para operação segura, seguido por um valor `NUM`.                                                                                                                                                                                                                      |
-| `max_peso`             | (Dentro de `limite`) Especifica o peso máximo de carga que o drone pode transportar, seguido por um valor `NUM`.                                                                                                                                                                                                                 |
-| `restricoes`           | Define uma lista de restrições operacionais para um modelo de drone. Consiste em uma ou mais definições de `restricao`, separadas por vírgulas.                                                                                                                                                                                  |
-| `restricao`            | Especifica uma única restrição operacional. Pode ser 'voo_diurno' ou 'voo_noturno'.                                                                                                                                                                                                                                              |
-| `certificacao`         | Representa uma certificação específica que o modelo de drone possui. É um `ID` (identificador).                                                                                                                                                                                                                                  |
-| `estado`               | Representa o estado atual de um drone. Pode ser um dos estados predefinidos: 'ativo', 'manutencao', 'inativo', ou 'em_missao'.                                                                                                                                                                                                   |
+| Regra                  | Descrição                                                                                                                                                                                                                                                                                                                               |
+|------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `modelos`              | Define a estrutura geral de um conjunto de modelos. Pode consistir em zero ou mais definições de `modelo`, seguidas por um marcador de Fim De Ficheiro (EOF).                                                                                                                                                                           |
+| `modelo`               | Descreve o projeto ou tipo de um drone. Começa com a palavra-chave 'modelo', seguida por um nome de modelo (STRING). Em seguida, contém detalhes entre chavetas: capacidade em kg, autonomia em minutos, especificações de velocidade (cruzeiro, subida, descida), lista de sensores, certificações, limites operacionais e restrições. |
+| `capacidade`           | (Dentro de `modelo`) Especifica a capacidade de carga do modelo de drone em quilogramas, representada por um valor `NUM` seguido de "kg".                                                                                                                                                                                               |
+| `autonomia`            | (Dentro de `modelo`) Especifica a autonomia de voo do modelo de drone em minutos, representada por um valor `NUM` seguido de "min".                                                                                                                                                                                                     |
+| `velocidade`           | (Dentro de `modelo`) Define as especificações de velocidade do modelo entre chavetas, contendo três tipos de velocidade: cruzeiro, subida e descida, cada uma em km/h.                                                                                                                                                                  |
+| `certificacao`         | Representa uma certificação específica que o modelo de drone possui. É um `ID` (identificador).                                                                                                                                                                                                                                         |
+| `sensores`             | Define uma lista de sensores. Consiste em um ou mais identificadores de `sensor`, separados por vírgulas.                                                                                                                                                                                                                               |
+| `sensor`               | Representa um único sensor. É um `ID` (identificador).                                                                                                                                                                                                                                                                                  |
+| `limites_operacionais` | Define uma lista de limites operacionais para um modelo de drone. Consiste em uma ou mais definições de `limite`, separadas por vírgulas.                                                                                                                                                                                               |
+| `limite`               | Especifica um único tipo de limite operacional. Pode ser `max_horas_voo`, `max_altitude`, `min_bateria` ou `max_peso`, cada um seguido por um valor `NUM`.                                                                                                                                                                              |
+| `restricoes`           | Define uma lista de restrições operacionais para um modelo de drone. Consiste em uma ou mais definições de `restricao`, separadas por vírgulas.                                                                                                                                                                                         |
+| `restricao`            | Especifica uma única restrição operacional. Pode ser 'voo_diurno' ou 'voo_noturno'.                                                                                                                                                                                                                                                     |
 
-### [2. Missão](src/main/antlr4/Missoes.g4)
+### [2. Drones](docs/gramaticas/Drones.g4)
+
+| Regra                | Descrição                                                                                                                                                                                                                                                                                                                    |
+|----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `drones`             | Define a estrutura geral de um conjunto de drones. Pode consistir em zero ou mais definições de `drone`, seguidas por um marcador de Fim De Ficheiro (EOF).                                                                                                                                                                  |
+| `drone`              | Representa uma instância individual de drone. Começa com a palavra-chave 'drone', seguida por um identificador único para o drone (STRING). Entre chavetas estão o número de série, o modelo de referência, peso base em kg, bateria atual em %, estado atual, horas de voo, data da última manutenção e próxima manutenção. |
+| `numero_serie`       | (Dentro de `drone`) Especifica o número de série único do drone, representado por um valor `NUM`.                                                                                                                                                                                                                            |
+| `modelo`             | (Dentro de `drone`) Especifica o modelo de referência do drone, representado por um valor `STRING` que deve corresponder a um modelo definido na gramática Modelos.                                                                                                                                                          |
+| `peso_base`          | (Dentro de `drone`) Especifica o peso base do drone em quilogramas, representado por um valor `NUM` seguido de "kg".                                                                                                                                                                                                         |
+| `bateria_atual`      | (Dentro de `drone`) Especifica o nível atual de bateria do drone em percentagem, representado por um valor `NUM` seguido de "%".                                                                                                                                                                                             |
+| `horas_voo`          | (Dentro de `drone`) Especifica o total de horas de voo acumuladas pelo drone, representado por um valor `NUM`.                                                                                                                                                                                                               |
+| `ultima_manutencao`  | (Dentro de `drone`) Especifica a data da última manutenção realizada no drone, representada por um valor `DATA` no formato YYYY-MM-DD.                                                                                                                                                                                       |
+| `proxima_manutencao` | (Dentro de `drone`) Especifica a data agendada para a próxima manutenção do drone, representada por um valor `DATA` no formato YYYY-MM-DD.                                                                                                                                                                                   |
+| `estado`             | Representa o estado atual de um drone. Pode ser um dos estados predefinidos: 'ativo', 'manutencao', 'inativo', ou 'em_missao'.                                                                                                                                                                                               |
+
+### [3. Missão](docs/gramaticas/Missoes.g4)
 
 | Regra           | Descrição                                                                                                                                                                                                                                                                                                             |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -52,7 +64,7 @@ A estrutura de cada gramatica é simples e funciona similar a JSON, mas sem virg
 | `estado_missao` | Representa o estado atual de uma missão. Pode ser um dos estados predefinidos: 'planeada', 'em_curso', ou 'concluida'.                                                                                                                                                                                                |
 
 # Tokens
-Estes tokens sao comuns às duas gramaticas existentes ([Frota](src/main/antlr4/Frota.g4) e [Missões](src/main/antlr4/Missoes.g4)). 
+Estes tokens sao comuns às três gramaticas existentes ([Modelos](docs/gramaticas/Modelos.g4), [Drones](docs/gramaticas/Drones.g4) e [Missões](src/main/antlr4/Missoes.g4)). 
 Um token define uma cadeia de caracteres representado pela expressão regular definida.
 A tabela abaixo descreve os tokens utilizados nas gramáticas.
 
@@ -62,11 +74,27 @@ A tabela abaixo descreve os tokens utilizados nas gramáticas.
 | `ID`       | Um identificador, que deve começar com uma letra (a-z, A-Z) ou um underscore (_), seguido por zero ou mais letras, números (0-9), ou underscores. |
 | `NUM`      | Um valor numérico. Pode ser um inteiro ou um número decimal (ex: 10, 3.14).                                                                       |
 | `HORA`     | Representa uma hora no formato HH:MM (e.g., 09:30, 22:15).                                                                                        |
-| `DATA`     | Uma data no formato YYYY-MM-DD (ex: 2023-10-27).                                                                                                  |
+| `DATA`     | Uma data no formato YYYY-MM-DD (ex: 2023-10-27). Usado especificamente na gramática Drones.                                                       |
 | `WS`       | Caracteres de espaço em branco (espaços, tabulações \t, carriage returns \r, novas linhas \n).                                                    |
 
+# Estrutura do projeto
+
+```
+LPROG_ACS_2DI_1212125_1221515/
+├── README.md                       # Documentação do projeto
+├── docs/                           # Documentação e recursos
+│   ├── dm.puml                     # Source do modelo de domínio em PlantUML
+│   ├── dm.svg                      # Imagem do modelo de dominio em SVG
+│   └── gramaticas/                 # Definições das gramáticas ANTLR4
+│       ├── Drones.g4               # Gramática para definição de drones
+│       ├── Frota.g4                # Gramática antiga da frota (não utilizada)
+│       ├── Missoes.g4              # Gramática para definição de missões
+│       └── Modelos.g4              # Gramática para definição de modelos
+├── src/                            # Source code do projeto
+│   └── main/
+│       └── java/                   # Código da aplicação em Java 
+```
 
 
-
-# Domain Model
+# Modelo de domínio
 ![Domain Model](docs/dm.svg)

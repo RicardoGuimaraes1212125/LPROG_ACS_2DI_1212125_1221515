@@ -1,0 +1,189 @@
+@startuml Portus Drones Domain Model
+!define DOMAIN_COLOR #E8F4FD
+!define ENTITY_COLOR #B3D9FF
+!define VALUE_COLOR #FFE6CC
+!define SERVICE_COLOR #D4EDDA
+
+left to right direction
+
+package "Domain" DOMAIN_COLOR {
+
+    class Frota ENTITY_COLOR   {
+        +drones: List<Drone> {static}
+        +modelos: List<Modelo> {static}
+    }
+    
+    class Drone ENTITY_COLOR  {
+        -nome: String
+        -numeroSerie: long
+        -modelo: String
+        -pesoBase: double
+        -bateriaAtual: double
+        -estado: String
+        -horasVoo: double
+        -ultimaManutencao: LocalDate
+        -proximaManutencao: LocalDate
+    }
+    
+    class Modelo ENTITY_COLOR {
+        -nome: String
+        -capacidadeKg: double
+        -autonomiaMin: double
+        -velocidadeCruzeiro: double
+        -velocidadeSubida: double
+        -velocidadeDescida: double
+        -sensores: List<String>
+        -certificacoes: List<String>
+        -limites: Map<String, Double>
+        -restricoes: List<String>
+    }
+
+    class Missoes ENTITY_COLOR {
+        +missoes: List<Missao> {static}
+    }
+    
+    class Missao ENTITY_COLOR {
+        -nome: String
+        -inicio: String
+        -drone: String
+        -estado: EstadoMissao
+        -entregas: List<Entrega>
+    }
+    
+    enum EstadoMissao VALUE_COLOR {
+        PENDENTE
+        EM_ANDAMENTO
+        CONCLUIDA
+        CANCELADA
+        +fromString(estadoText: String): EstadoMissao
+    }
+
+    class Entrega ENTITY_COLOR {
+        -origem: Localizacao
+        -destino: Localizacao
+        -distancia: double
+        -altitude: double
+        -peso: double
+    }
+    
+    class Localizacao ENTITY_COLOR {
+        -nome: String
+        -latitude: Coordenada
+        -longitude: Coordenada
+    }
+    
+    class Coordenada ENTITY_COLOR {
+        -valor: double
+    }
+}
+
+package "Services" SERVICE_COLOR {    
+    
+    class FrotaService {
+        +carregarModelos(caminho: String): void
+        +carregarDrones(caminho: String): void
+        +exportarDrones(caminho: String): void
+        +listarDrones(): void
+        +listarModelos(): void
+        +adicionarDrone(d: Drone): void
+        +getModeloPorNome(nome: String): Modelo
+        +eliminarDrone(nomeDrone: String): boolean
+    }
+    
+    class MissoesService {
+        +loadMissoesOnProgramStart(): void
+        +loadMissoesFromFile(filePath: String): void
+        +exportMissoesToFile(filePath: String): void
+        -missaoToString(missao: Missao): String
+        +removeMissao(name: String): void
+        +listMissoes(): void
+        +calculateMissaoDistance(nomeMissao: String): double
+        +calculateMissaoEstimatedTime(nomeMissao: String): double
+        +validateMissao(nomeMissao: String): void
+    }
+    
+}
+
+package "Parsers & Visitors" #F0F0F0 {
+    abstract class ModelosParser {
+        +modelo(): ModeloContext
+        +certificacao(): CertificacaoContext
+        +sensores(): SensoresContext
+        +sensor(): SensorContext
+        +limites_operacionais(): Limites_operacionaisContext
+        +limite(): LimiteContext
+        +restricoes(): RestricoesContext
+        +restricao(): RestricaoContext
+        +modelos(): ModelosContext
+    }
+    
+    abstract class DronesParser {
+        +drone(): DroneContext
+        +estado(): EstadoContext
+        +drones(): DronesContext
+    }
+    
+    abstract class MissoesParser {
+        +missao(): MissaoContext
+        +entrega(): EntregaContext
+        +localizacao(): LocalizacaoContext
+        +coordenada(): CoordenadaContext
+        +estado_missao(): Estado_missaoContext
+    }
+    
+    class ModelosVisitorImpl {
+        +modelos: List<Modelo>
+        +visitModelos(ctx: ModelosContext): Void
+        +visitModelo(ctx: ModeloContext): Void
+    }
+    
+    class MissoesModelVisitor {
+        +visitMissoes(ctx: MissoesContext): List<Missao>
+        +visitMissao(ctx: MissaoContext): Missao
+        +visitEntregas(ctx: EntregasContext): List<Entrega>
+        +visitEntrega(ctx: EntregaContext): Entrega
+        +visitLocalizacao(ctx: LocalizacaoContext): Localizacao
+        +visitEstado_missao(ctx: Estado_missaoContext): EstadoMissao
+        +visitCoordenada(ctx: CoordenadaContext): Double
+    }
+}
+
+' Domain Relationships
+Frota ||--o{ Drone : contains
+Frota ||--o{ Modelo : contains
+Drone }o--|| Modelo : "uses"
+
+Missoes ||--o{ Missao : contains
+Missao ||--o{ Entrega : contains
+Missao }o--|| EstadoMissao : has
+Missao }o--|| Drone : "assigned to"
+
+Entrega ||--|| Localizacao : origem
+Entrega ||--|| Localizacao : destino
+
+Localizacao ||--|| Coordenada : latitude
+Localizacao ||--|| Coordenada : longitude
+
+' Service Relationships
+FrotaService ..> Frota : manages
+FrotaService ..> Drone : operates on
+FrotaService ..> Modelo : operates on
+MissoesService ..> Missoes : manages
+MissoesService ..> Missao : operates on
+MissoesService ..> Drone : validates availability
+
+' Parser relationships
+ModelosVisitorImpl ..> Modelo : creates
+MissoesModelVisitor ..> Missao : creates
+MissoesModelVisitor ..> Entrega : creates
+MissoesModelVisitor ..> Localizacao : creates
+
+ModelosParser ..> ModelosVisitorImpl : uses
+MissoesParser ..> MissoesModelVisitor : uses
+
+' Service to Parser relationships
+FrotaService ..> DronesParser : uses
+FrotaService ..> ModelosParser : uses
+MissoesService ..> MissoesParser : uses
+
+@enduml

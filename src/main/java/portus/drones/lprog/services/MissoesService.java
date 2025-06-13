@@ -14,25 +14,28 @@ import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.Recognizer;
 
 import portus.drones.lprog.domain.Drone;
+import static portus.drones.lprog.domain.Frota.drones;
+import static portus.drones.lprog.domain.Frota.modelos;
 import portus.drones.lprog.domain.Modelo;
 import portus.drones.lprog.domain.entrega.Entrega;
 import portus.drones.lprog.domain.entrega.Localizacao;
 import portus.drones.lprog.domain.missao.EstadoMissao;
 import portus.drones.lprog.domain.missao.Missao;
-
-import static portus.drones.lprog.domain.Frota.drones;
-import static portus.drones.lprog.domain.Frota.modelos;
 import static portus.drones.lprog.domain.missao.Missoes.missoes;
 import portus.drones.lprog.lexers.MissoesLexer;
 import portus.drones.lprog.parsers.MissoesParser;
 import portus.drones.lprog.visitors.MissoesModelVisitor;
 
 
+/**
+ * Service class for managing missions (missões).
+ * Handles loading, parsing, exporting, and validating mission data.
+ */
 public class MissoesService {
 
-
     /**
-     * Loads missions from a default file when the program starts
+     * Loads missions from a default file when the program starts.
+     * If the file does not exist, informs the user.
      */
     public void loadMissoesOnProgramStart() {
         // Load missions from the default file if it exists
@@ -46,8 +49,8 @@ public class MissoesService {
     }
 
     /**
-     * Loads missions from a file
-     * @param filePath path to the file
+     * Loads missions from a file.
+     * @param filePath Path to the file containing missions.
      */
     public void loadMissoesFromFile(String filePath) {
         try {
@@ -90,8 +93,7 @@ public class MissoesService {
 
 
     /**
-     * Exports missions to a file
-     *
+     * Exports missions to a file.
      * @param filePath path where to save the file
      */
     public void exportMissoesToFile(String filePath) {
@@ -107,9 +109,10 @@ public class MissoesService {
         }
     }
 
-
     /**
-     * Converts a mission object back to its string representation for export purposes
+     * Converts a mission object back to its string representation for export purposes.
+     * @param missao the mission to convert
+     * @return string representation of the mission
      */
     private String missaoToString(Missao missao) {
         StringBuilder sb = new StringBuilder();
@@ -160,7 +163,7 @@ public class MissoesService {
 
 
     /**
-     * Remove a missao by name
+     * Remove a missao by name.
      * @param name the name of the missao to remove
      */
     public void removeMissao(String name) {
@@ -187,7 +190,7 @@ public class MissoesService {
     }
 
     /**
-     * Lists all missions
+     * Lists all missions by printing them to the console.
      */
     public void listMissoes() {
         if (missoes.isEmpty()) {
@@ -198,6 +201,11 @@ public class MissoesService {
         missoes.forEach(System.out::println);
     }
 
+    /**
+     * Calculates the total distance of a mission.
+     * @param nomeMissao the name of the mission
+     * @return total distance, or -1 if not found
+     */
     public double calculateMissaoDistance(String nomeMissao) {
         for (Missao m : missoes) {
             if (m.getNome().equalsIgnoreCase(nomeMissao)) {
@@ -210,6 +218,11 @@ public class MissoesService {
         return -1; // Missão não encontrada
     }
 
+    /**
+     * Calculates the estimated time to complete a mission.
+     * @param nomeMissao the name of the mission
+     * @return estimated time in hours, or -1 if not found
+     */
     public double calculateMissaoEstimatedTime(String nomeMissao) {
         Missao missao = missoes
                 .stream()
@@ -254,6 +267,10 @@ public class MissoesService {
     }
 
 
+    /**
+     * Validates a mission by checking range and restrictions.
+     * @param nomeMissao the name of the mission to validate
+     */
     public void validateMissao(String nomeMissao) {
         Missao missao = missoes
                 .stream()
@@ -296,11 +313,7 @@ public class MissoesService {
         double rangeInMinutes = modelo.getAutonomiaMin();
         double rangeInKms = (rangeInMinutes / 60) * cruiseSpeed;
 
-        double missaoTotalDistance = missao
-                .getEntregas()
-                .stream()
-                .mapToDouble(Entrega::getDistancia)
-                .sum();
+        double missaoTotalDistance = this.calculateMissaoDistance(missao.getNome());
 
         boolean hasSufficientRange = rangeInKms >= missaoTotalDistance;
 
@@ -309,8 +322,9 @@ public class MissoesService {
             return;
         }
 
-
+        // Parse the start time of the mission from string to LocalTime to check night restrictions
         LocalTime horaInicio = LocalTime.parse(missao.getInicio());
+
         boolean isMissaoAtNighTime = horaInicio.getHour() >= 20 || horaInicio.getHour() < 6;
         boolean nightTimeFlightPermitted = modelo
                 .getRestricoes()

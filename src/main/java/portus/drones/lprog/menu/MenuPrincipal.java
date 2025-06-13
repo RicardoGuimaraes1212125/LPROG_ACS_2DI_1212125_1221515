@@ -1,9 +1,13 @@
 package portus.drones.lprog.menu;
 
+/**
+ * Main menu for the Portus Drones application.
+ * Provides navigation to mission and fleet management.
+ */
 public class MenuPrincipal implements Runnable {
 
     /**
-     * Runs this operation.
+     * Runs the main menu loop, allowing the user to select between missions, fleet, or exit.
      */
     @Override
     public void run() {
@@ -20,16 +24,12 @@ public class MenuPrincipal implements Runnable {
             option = System.console().readLine();
 
             switch (option) {
-                case "1":
-                    new MenuMissoes().run();
-                    break;
-                case "2":
-                    new MenuFrota().run();
-                    break;
-                case "3":
+                case "1" -> new MenuMissoes().run();
+                case "2" -> new MenuFrota().run();
+                case "3" -> {
                     return; // Sair do loop e encerrar o programa
-                default:
-                    System.out.println("Opção inválida. Tente novamente.");
+                }
+                default -> System.out.println("Opção inválida. Tente novamente.");
             }
         }
     }

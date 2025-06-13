@@ -1,12 +1,16 @@
 package portus.drones.lprog.services;
 
-import java.io.*;
-import java.nio.file.*;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
-import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.CharStreams;
+import org.antlr.v4.runtime.CommonTokenStream;
 
-
-import portus.drones.lprog.domain.*;
+import portus.drones.lprog.domain.Drone;
+import static portus.drones.lprog.domain.Frota.drones;
+import static portus.drones.lprog.domain.Frota.modelos;
+import portus.drones.lprog.domain.Modelo;
 import portus.drones.lprog.lexers.DronesLexer;
 import portus.drones.lprog.lexers.ModelosLexer;
 import portus.drones.lprog.parsers.DronesParser;
@@ -14,12 +18,18 @@ import portus.drones.lprog.parsers.ModelosParser;
 import portus.drones.lprog.visitors.DronesVisitorImpl;
 import portus.drones.lprog.visitors.ModelosVisitorImpl;
 
-import static portus.drones.lprog.domain.Frota.drones;
-import static portus.drones.lprog.domain.Frota.modelos;
 
-
+/**
+ * Service class for managing the drone fleet and models.
+ * Handles loading, parsing, and exporting drone and model data.
+ */
 public class FrotaService {
 
+    /**
+     * Loads drone models from a file.
+     * @param caminho Path to the file containing models.
+     * @throws IOException if the file cannot be read.
+     */
     public void carregarModelos(String caminho) throws IOException {
         String input = Files.readString(Path.of(caminho));
         ModelosLexer lexer = new ModelosLexer(CharStreams.fromString(input));
@@ -34,6 +44,11 @@ public class FrotaService {
         System.out.println("Modelos carregados: " + modelos.size());
     }
 
+    /**
+     * Loads drones from a file.
+     * @param caminho Path to the file containing drones.
+     * @throws IOException if the file cannot be read.
+     */
     public void carregarDrones(String caminho) throws IOException {
         String input = Files.readString(Path.of(caminho));
         DronesLexer lexer = new DronesLexer(CharStreams.fromString(input));
@@ -48,6 +63,11 @@ public class FrotaService {
         System.out.println("Drones carregados: " + drones.size());
     }
 
+    /**
+     * Exports the current list of drones to a file.
+     * @param caminho Path to the output file.
+     * @throws IOException if the file cannot be written.
+     */
     public void exportarDrones(String caminho) throws IOException {
         StringBuilder sb = new StringBuilder();
         for (Drone d : drones) {
@@ -66,18 +86,33 @@ public class FrotaService {
         System.out.println("Frota exportada para " + caminho);
     }
 
+    /**
+     * Lists all drones in the fleet by printing them to the console.
+     */
     public void listarDrones() {
         drones.forEach(System.out::println);
     }
 
+    /**
+     * Lists all models in the fleet by printing them to the console.
+     */
     public void listarModelos() {
         modelos.forEach(System.out::println);
     }
 
+    /**
+     * Adds a drone to the fleet.
+     * @param d the drone to add
+     */
     public void adicionarDrone(Drone d) {
         drones.add(d);
     }
 
+    /**
+     * Gets a model by its name.
+     * @param nome the name of the model
+     * @return the model with the given name, or null if not found
+     */
     public Modelo getModeloPorNome(String nome) {
         return modelos
                 .stream()
@@ -86,6 +121,11 @@ public class FrotaService {
                 .orElse(null);
     }
 
+    /**
+     * Removes a drone from the fleet by its name.
+     * @param nomeDrone the name of the drone to remove
+     * @return true if the drone was removed, false otherwise
+     */
     public boolean eliminarDrone(String nomeDrone) {
         if (nomeDrone == null || nomeDrone.isBlank()) return false;
 

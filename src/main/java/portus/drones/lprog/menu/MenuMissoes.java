@@ -3,14 +3,24 @@ package portus.drones.lprog.menu;
 
 import portus.drones.lprog.services.MissoesService;
 
+/**
+ * Menu for managing missions (missões).
+ * Allows the user to load, remove, list, export, and validate missions.
+ */
 public class MenuMissoes implements Runnable {
     private final MissoesService missoesService;
 
+    /**
+     * Constructs the MenuMissoes and loads missions on program start.
+     */
     public MenuMissoes() {
         this.missoesService = new MissoesService();
         missoesService.loadMissoesOnProgramStart();
     }
 
+    /**
+     * Runs the mission management menu loop.
+     */
     @Override
     public void run() {
         String option;
@@ -32,31 +42,17 @@ public class MenuMissoes implements Runnable {
             option = System.console().readLine();
 
             switch (option) {
-                case "1":
-                    uploadMissoesFromFile();
-                    break;
-                case "2":
-                    removeMissao();
-                    break;
-                case "3":
-                    listMissoes();
-                    break;
-                case "4":
-                    exportMissoesToFile();
-                    break;
-                case "5":
-                    calculateMissaoDistance();
-                    break;
-                case "6":
-                    calculateMissaoEstimatedTime();
-                    break;
-                case "7":
-                    validateMissao();
-                    break;
-                case "8":
+                case "1" -> uploadMissoesFromFile();
+                case "2" -> removeMissao();
+                case "3" -> listMissoes();
+                case "4" -> exportMissoesToFile();
+                case "5" -> calculateMissaoDistance();
+                case "6" -> calculateMissaoEstimatedTime();
+                case "7" -> validateMissao();
+                case "8" -> {
                     return;
-                default:
-                    System.out.println("Opção inválida. Tente novamente.");
+                }
+                default -> System.out.println("Opção inválida. Tente novamente.");
             }
         }
     }

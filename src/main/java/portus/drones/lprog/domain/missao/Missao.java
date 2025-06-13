@@ -1,10 +1,13 @@
 package portus.drones.lprog.domain.missao;
 
+import java.util.List;
+
 import portus.drones.lprog.domain.entrega.Entrega;
 import portus.drones.lprog.domain.entrega.Localizacao;
 
-import java.util.List;
-
+/**
+ * Represents a mission (missão) assigned to a drone, with deliveries and state.
+ */
 public class Missao {
     private String nome;
     private String inicio;
@@ -14,10 +17,21 @@ public class Missao {
     private List<Entrega> entregas;
 
 
+    /**
+     * Default constructor for Missao.
+     */
     public Missao() {
 
     }
 
+    /**
+     * Constructs a Missao with all fields.
+     * @param nome mission name
+     * @param inicio start time
+     * @param drone assigned drone
+     * @param estado mission state
+     * @param entregas list of deliveries
+     */
     public Missao(String nome, String inicio, String drone, EstadoMissao estado, List<Entrega> entregas) {
         this.nome = nome;
         this.inicio = inicio;
@@ -26,6 +40,10 @@ public class Missao {
         this.entregas = entregas;
     }
 
+    /**
+     * Gets the mission name.
+     * @return mission name
+     */
     public String getNome() {
         return nome;
     }

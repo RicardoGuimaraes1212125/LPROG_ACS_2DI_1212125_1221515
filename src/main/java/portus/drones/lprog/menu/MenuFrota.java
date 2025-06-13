@@ -1,19 +1,24 @@
 package portus.drones.lprog.menu;
 
+import java.time.LocalDate;
+import java.util.Scanner;
+
 import portus.drones.lprog.domain.Drone;
+import static portus.drones.lprog.domain.Frota.modelos;
 import portus.drones.lprog.domain.Modelo;
 import portus.drones.lprog.services.FrotaService;
 
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Scanner;
-
-import static portus.drones.lprog.domain.Frota.modelos;
-
+/**
+ * Menu for managing the drone fleet and models.
+ * Allows the user to load, list, add, export, and remove drones and models.
+ */
 public class MenuFrota implements Runnable {
     private final FrotaService frotaService = new FrotaService();
     private final Scanner sc = new Scanner(System.in);
 
+    /**
+     * Runs the fleet management menu loop.
+     */
     @Override
     public void run() {
 

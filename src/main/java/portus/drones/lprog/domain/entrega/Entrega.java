@@ -1,5 +1,8 @@
 package portus.drones.lprog.domain.entrega;
 
+/**
+ * Represents a delivery (entrega) with origin, destination, distance, altitude, and weight.
+ */
 public class Entrega {
     private Localizacao origem;
     private Localizacao destino;
@@ -8,8 +11,19 @@ public class Entrega {
     private double peso;
 
 
+    /**
+     * Default constructor for Entrega.
+     */
     public Entrega() { }
 
+    /**
+     * Constructs an Entrega with all fields.
+     * @param origem origin location
+     * @param destino destination location
+     * @param distancia distance in km
+     * @param altitude altitude in meters
+     * @param peso weight in kg
+     */
     public Entrega(Localizacao origem, Localizacao destino, double distancia, double altitude, double peso) {
         this.origem = origem;
         this.destino = destino;
